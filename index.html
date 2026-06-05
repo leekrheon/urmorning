@@ -2,6 +2,40 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+  <!-- 보안 메타 태그 -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://rsxcodvaikgaetwonoog.supabase.co;
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https:;
+    font-src 'self';
+    connect-src 'self' https://rsxcodvaikgaetwonoog.supabase.co https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com;
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- Google Analytics 4 (익명화 모드) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-765CWWNLYE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-765CWWNLYE', {
+    anonymize_ip: true,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    restricted_data_processing: true,
+    send_page_view: false  /* 수동으로 화면 전환 이벤트 전송 */
+  });
+</script>
+<!-- End Google Analytics 4 -->
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>드라이브타임스탬프</title>
 <link rel="icon" type="image/png" href="favicon.png">
@@ -25,6 +59,29 @@
 </script>
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 <!-- End Vercel Web Analytics -->
+<!-- 폰트 preload -->
+<link rel="preload" href="font/MemomentKkukkukk.ttf" as="font" type="font/ttf" crossorigin>
+<!-- 배경/공통 이미지 preload -->
+<link rel="preload" href="filter.png"   as="image">
+<link rel="preload" href="filter-2.png" as="image">
+<link rel="preload" href="start.png"    as="image">
+<link rel="preload" href="logo.png"     as="image">
+<!-- 스탬프 이미지 preload -->
+<link rel="preload" href="asset/stamp-1.png"  as="image">
+<link rel="preload" href="asset/stamp-2.png"  as="image">
+<link rel="preload" href="asset/coating.png"  as="image">
+<!-- 캐릭터 이미지 preload -->
+<link rel="preload" href="asset/time0.png" as="image">
+<link rel="preload" href="asset/time1.png" as="image">
+<link rel="preload" href="asset/time2.png" as="image">
+<link rel="preload" href="asset/time3.png" as="image">
+<link rel="preload" href="asset/time4.png" as="image">
+<link rel="preload" href="asset/time5.png" as="image">
+<link rel="preload" href="asset/time6.png" as="image">
+<!-- 아이콘 preload -->
+<link rel="preload" href="asset/ico1.png" as="image">
+<link rel="preload" href="asset/ico2.png" as="image">
+<link rel="preload" href="asset/ico3.png" as="image">
 <style>
 /* ── 메모먼트꾹꾹체 (MemomentKkukkukk) ──
    단일 Regular 파일, weight 전 범위 적용
@@ -128,9 +185,9 @@
 }
 
 html { height: 100%; }
-body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--g900); overflow: hidden; touch-action: manipulation; -webkit-text-size-adjust: none; display: flex; justify-content: center; align-items: stretch; }
+body { height: 100%; background: url('filter.png') center center / cover fixed, var(--bg); font-family: 'Memoment', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--g900); overflow: hidden; touch-action: manipulation; -webkit-text-size-adjust: none; }
 
-.app { width: 100%; max-width: 430px; height: 100vh; height: 100dvh; position: relative; overflow: hidden; background: url('filter.png') center center / cover, var(--bg); margin: 0 auto; }
+.app { width: 100%; height: 100vh; height: 100dvh; position: relative; overflow: hidden; background: url('filter.png') center center / cover, var(--bg); }
 
 /* ── SCREENS ── */
 .screen {
@@ -180,12 +237,8 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
 .screen#screen-splash { padding: 0; }
 .splash-bg { position: absolute; inset: 0; z-index: 0; background-image: url('start.png'); background-size: cover; background-position: top center; touch-action: none; user-select: none; }
 .splash-cta-wrap { position: absolute; bottom: 52px; left: 24px; right: 24px; z-index: 1; }
-.splash-cta-wrap .cta-btn { border-radius: 999px; font-size: 17px; }
+.splash-cta-wrap .cta-btn { border-radius: 999px; font-size: 17px; width: 80%; margin: 0 auto; display: block; }
 
-/* ── AD ── */
-.screen#screen-ad { padding: 0; }
-.ad-bg { position: absolute; inset: 0; z-index: 0; background-image: url('ad.png'); background-size: cover; background-position: top center; touch-action: none; user-select: none; }
-.ad-cta-wrap { position: absolute; bottom: 52px; left: 24px; right: 24px; z-index: 1; }
 
 /* ── TIME PICKER ── */
 .time-picker-wrap {
@@ -219,7 +272,7 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
 .weight-num { font-size: 80px; font-weight: 800; letter-spacing: -0.055em; color: var(--g900); line-height: 1; min-width: 110px; transition: color 0.2s; }
 .weight-num.placeholder { color: var(--g200); }
 .weight-unit { font-size: 22px; font-weight: 600; color: var(--g400); padding-bottom: 10px; }
-.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 20px; }
+.numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 14px; }
 .numpad-key {
   background: var(--white); border: none; border-radius: var(--r-sm);
   padding: 15px 12px; font-family: 'Memoment', sans-serif; font-size: 22px; font-weight: 500;
@@ -344,15 +397,15 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
 .stamp-result-wrap {
   position: absolute; inset: 0;
   display: flex; flex-direction: column; align-items: center;
-  justify-content: flex-start;
-  padding-top: 20.5vh;
+  justify-content: center;
+  padding-bottom: calc(var(--app-vh, 1vh) * 10);
   box-sizing: border-box;
 }
 
 /* 로고: 시안 Y 중심 7.1% */
 .logo1-result {
   position: absolute;
-  top: 2.9%; left: 50%; transform: translateX(-50%);
+  top: 5%; left: 50%; transform: translateX(-50%);
   height: 9vh; max-height: 70px; width: auto;
   z-index: 5; pointer-events: none;
 }
@@ -362,30 +415,22 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
    현재 35%로 너무 작음 → 48vw로 복원 */
 .stamp-card {
   position: relative;
-  width: 46vw;
-  max-width: 200px;
-  aspect-ratio: 401 / 594;
   flex-shrink: 0;
+  /* aspect-ratio는 JS에서 stamp 종류에 따라 동적 설정 */
 }
+.stamp-card.stamp-portrait  { width: 207px; aspect-ratio: 445 / 560; }
+.stamp-card.stamp-landscape { width: 242px; aspect-ratio: 560 / 445; }
 
 /* stamp.png 배경 */
 .stamp-bg {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: fill; pointer-events: none; z-index: 0;
 }
-/* 우표 내부 얇은 검은 테두리 */
-.stamp-inner::before {
-  content: '';
-  position: absolute; inset: -2px;
-  border: 1px solid rgba(0,0,0,0.18);
-  pointer-events: none; z-index: 10;
-}
-
 /* stamp-inner: 우표 외곽 대비 4.5% 여백 */
 .stamp-inner {
   position: absolute;
   top: 4.5%; left: 4.5%; right: 4.5%; bottom: 4%;
-  overflow: hidden; z-index: 1;
+  overflow: visible; z-index: 1;
 }
 
 /* 시간 숫자 */
@@ -394,14 +439,14 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
   position: absolute; top: 3.5%; left: 1%; right: 0;
   overflow: visible;
 }
-.stamp-slot { overflow: hidden; }
+.stamp-slot { overflow: hidden; margin-right: -4px; } /* 숫자 사이 간격 */
 .stamp-colon {
   font-family: 'Memoment', sans-serif; font-weight: 700;
   color: #c91c1c; line-height: 1;
   padding: 0; margin: 0 -1px;
   align-self: center;
   /* 시간 숫자에 테두리(stroke) 효과 — paint-order로 텍스트 먼저 */
-  -webkit-text-stroke: 2px #1a1a1a;
+  -webkit-text-stroke: 1.5px #1a1a1a;
   paint-order: stroke fill;
 }
 
@@ -422,12 +467,11 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
 
 /* AM/PM */
 .stamp-ampm-wrap {
-  position: absolute; top: 3%; right: 1%;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 2px; z-index: 4;
+  z-index: 4;
 }
 .stamp-ampm {
   font-family: 'Memoment', sans-serif; font-weight: 700;
-  color: #c91c1c; font-size: clamp(8px, 2.2vw, 11px); line-height: 1;
+  color: #c91c1c; font-size: calc(var(--app-vw, 1vw) * 2.2); line-height: 1;
 }
 .stamp-daybadge {
   font-family: 'Memoment', sans-serif; font-size: 9px; font-weight: 700;
@@ -549,7 +593,73 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
 }
 .roll-digit { display: block; text-align: center; }
 
+
+/* ── 데스크탑: 좌우 검은색, 앱은 중앙 고정 ── */
+@media (min-width: 480px) {
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
+  .app {
+    width: 430px;
+    flex-shrink: 0;
+    background: url('filter.png') center center / cover, var(--bg);
+  }
+}
+
+/* ── 시간대별 스탬프 레이아웃 클래스 ──
+   모든 % 값은 stamp-inner 기준 (카드 크기에 무관하게 비율 유지)
+*/
+/* 기본 (08~10, 10~12, DEFAULT) */
+.sl-default .stamp-time-row  { top:3.5%; left:1%; }
+.sl-default .stamp-coating   { top:28%;  left:8%;  width:37%; }
+.sl-default .stamp-character { top:23%;  left:9%;  width:100%; }
+
+/* LAYOUT_0: 06:00 이전 */
+.sl-0 .stamp-time-row  { top:2%; left:1.5%; }
+.sl-0 .stamp-coating   { top:28%;  left:20%; width:35%; }
+.sl-0 .stamp-character { top:20%;  left:-5%; width:100%; }
+
+/* LAYOUT_1: 06~08 (stamp-1 가로형 → top 1.258배 보정) */
+.sl-1 .stamp-time-row  { top:4.5%; left:1.5%; }
+.sl-1 .stamp-coating   { top:28%;  left:8%;   width:25%; }
+.sl-1 .stamp-character { top:37%;  left:-3%;  width:100%; }
+
+/* LAYOUT_2: 08~10 */
+.sl-2 .stamp-time-row  { top:2%; left:1.5%; }
+.sl-2 .stamp-coating   { top:28%;  left:8%;  width:29%; }
+.sl-2 .stamp-character { top:19%;  left:14%; width:93%; }
+
+/* LAYOUT_3: 10~12 */
+.sl-3 .stamp-time-row  { top:2%; left:-1%; }
+.sl-3 .stamp-coating   { top:28%;  left:8%;  width:34%; }
+.sl-3 .stamp-character { top:21%;  left:5%;  width:90%; }
+
+/* LAYOUT_16: 12~14 */
+.sl-16 .stamp-time-row  { top:4.5%; left:1.5%; }
+.sl-16 .stamp-coating   { top:28%;  left:8%;  width:29%; }
+.sl-16 .stamp-character { top:36%;  left:2%;  width:95%; }
+
+/* LAYOUT_6: 16+ (stamp-1 가로형) */
+.sl-6 .stamp-time-row  { top:4.5%; left:1.5%; }
+.sl-6 .stamp-coating   { top:28%;  left:8%;  width:29%; }
+.sl-6 .stamp-character { top:32%;  left:2%;  width:100%; }
+
+/* LAYOUT_5: 14~16 (stamp-1 가로형 → top 1.258배 보정) */
+.sl-5 .stamp-time-row  { top:4.5%; left:1.5%; }
+.sl-5 .stamp-coating   { top:31%;  left:4%;  width:24%; }
+.sl-5 .stamp-character { top:37%;  left:2%;  width:95%; }
+
+/* 카드 너비: 앱 너비 기준 46% (데스크탑/모바일 동일) */
+.stamp-card { }
 </style>
+
+<script>
+/* 페이지 렌더링 전 초기 화면 결정 — FOUC 방지 */
+window._sharedRid = new URLSearchParams(location.search).get('r');
+</script>
 </head>
 <body>
 
@@ -562,7 +672,7 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
 <div class="app">
 
   <!-- SPLASH -->
-  <div class="screen active" id="screen-splash">
+  <div class="screen" id="screen-splash">
     <div class="splash-bg"></div>
     <div class="splash-cta-wrap">
       <button class="cta-btn" onclick="goToIntro()">시작하기</button>
@@ -592,7 +702,7 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
             <img src="asset/ico2.png" alt="ico2" style="width:34px;height:auto;display:block;">
           </div>
           <div>
-            <div style="font-size:13px;font-weight:600;color:var(--txt-primary);margin-bottom:4px;letter-spacing:-0.02em;">개인 맞춤 계산</div>
+            <div style="font-size:13px;font-weight:600;color:var(--txt-primary);margin-bottom:4px;letter-spacing:-0.02em;">개인 맞춤형으로 계산해요.</div>
             <div style="font-size:12px;color:var(--txt-secondary);line-height:1.65;letter-spacing:-0.01em;">성별·키·나이·체중을 반영한<br>왓슨(Watson)식으로 개인별 수치를 산출합니다.</div>
           </div>
         </div>
@@ -601,17 +711,29 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
             <img src="asset/ico3.png" alt="ico3" style="width:41px;height:auto;display:block;">
           </div>
           <div>
-            <div style="font-size:13px;font-weight:600;color:#b36000;margin-bottom:4px;letter-spacing:-0.02em;">참고용 추정치입니다</div>
+            <div style="font-size:13px;font-weight:600;color:#b36000;margin-bottom:4px;letter-spacing:-0.02em;">(중요) 참고용 추정치입니다.</div>
             <div style="font-size:12px;color:#a05000;line-height:1.65;letter-spacing:-0.01em;">실제 분해 속도는 개인에 따라 달라질 수 있기에,<br>음주 후 운전 여부의 판단근거로 사용해서는 안 됩니다.</div>
           </div>
       </div>
     </div>
 
       
-      <button class="cta-btn" onclick="goToStep1()">네, 이해했습니다!</button>
+      <!-- 약관 동의 -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:0 2px;">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;width:100%;">
+          <input type="checkbox" id="agreeChk" onchange="updateAgreeBtn()"
+            style="width:22px;height:22px;accent-color:var(--main);cursor:pointer;flex-shrink:0;">
+          <span style="font-size:15px;color:var(--txt-secondary);line-height:1.6;letter-spacing:-0.01em;">
+            <a onclick="showPolicy('privacy')" style="color:var(--txt-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;">개인정보처리방침</a>
+            과
+            <a onclick="showPolicy('terms')" style="color:var(--txt-primary);font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;">이용약관</a>
+            에 동의합니다.
+          </span>
+        </label>
+      </div>
+      <button class="cta-btn" id="agreeBtn" onclick="goToStep1()" disabled style="opacity:0.4;transition:opacity 0.2s;">네, 이해했습니다!</button>
       <div style="text-align:center;margin-top:14px;">
-          <a href="https://www.law.go.kr/admRulLsInfoP.do?admRulId=92500&efYd=0" target="_blank" style="font-family:'Memoment', sans-serif;font-size:12px;font-weight:500;color:var(--txt-secondary);text-decoration:underline;text-underline-offset:3px;letter-spacing:-0.01em;">위드마크 공식 더 알아보기</a>
-        
+        <a href="https://www.law.go.kr/admRulLsInfoP.do?admRulId=92500&efYd=0" target="_blank" style="font-family:'Memoment', sans-serif;font-size:12px;font-weight:500;color:var(--txt-secondary);text-decoration:underline;text-underline-offset:3px;letter-spacing:-0.01em;">위드마크 공식 더 알아보기</a>
       </div>
     </div>
   </div>
@@ -653,7 +775,8 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
     <div class="screen-inner">
       <div class="eyebrow">Step 2</div>
       <div class="headline">(만)나이가<br>어떻게 되세요?</div>
-      <div class="weight-display">
+      <div class="subline" style="margin-bottom:16px;">개인 정보는 저장되지 않으니 안심하세요.</div>
+      <div class="weight-display" style="margin-bottom:12px;">
         <div class="weight-num placeholder" id="weightDisplay">--</div>
         <div class="weight-unit">세</div>
       </div>
@@ -684,10 +807,11 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
     <div class="screen-inner">
       <div class="eyebrow">Step 3</div>
       <div class="headline">키와 체중을<br>알려주시겠어요?</div>
+      <div class="subline" style="margin-bottom:16px;">개인 정보는 저장되지 않으니 안심하세요.</div>
       <!-- 키·체중 표시 -->
-      <div style="display:flex; gap:12px; margin-bottom:20px;">
+      <div style="display:flex; gap:12px; margin-bottom:12px;">
         <div id="haField-height" onclick="setHeightAgeField('height')"
-             style="flex:1; background:var(--white); border:1.5px solid var(--main); border-radius:var(--r-md); padding:16px; text-align:center; cursor:pointer; transition:border-color 0.2s;">
+             style="flex:1; background:var(--white); border:1.5px solid var(--main); border-radius:var(--r-md); padding:10px; text-align:center; cursor:pointer; transition:border-color 0.2s;">
           <div style="font-size:11px;font-weight:600;color:var(--g400);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">키</div>
           <div style="display:flex;align-items:baseline;justify-content:center;gap:4px;">
             <span class="weight-num placeholder" id="heightDisplay" style="font-size:48px;min-width:72px;">--</span>
@@ -796,7 +920,7 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
     <div class="screen-inner">
       <div class="eyebrow">Step 5</div>
       <div class="headline">몇 병이나<br>마실 건가요?</div>
-      <div class="subline">1병 = 360ml 기준이에요. (소주)</div>
+      <div class="subline">1병 360ml 기준으로 계산해요.</div>
       <div id="sojuBottleViz" style="background:#ffffff;border-radius:16px;margin-bottom:16px;overflow:hidden;min-height:160px;width:100%;"></div>
       <div class="bottle-counter">
         <div>
@@ -866,7 +990,7 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
     <div class="screen-inner">
       <div class="eyebrow">Step 7</div>
       <div class="headline">몇 병이나<br>마실 건가요?</div>
-      <div class="subline">1병 = 500ml 기준이에요. (맥주)</div>
+      <div class="subline">1병 500ml 기준으로 계산해요.</div>
       <div id="beerBottleViz" style="background:#ffffff;border-radius:16px;margin-bottom:16px;overflow:hidden;min-height:160px;width:100%;"></div>
       <div class="bottle-counter">
         <div>
@@ -893,10 +1017,11 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
       <img class="logo1-result" id="logo1Result" src="logo.png" alt="logo">
 
       <!-- 우표 컨테이너 -->
-      <div class="stamp-card anim-in anim-in-d1" id="shareCard">
+      <div class="stamp-card stamp-portrait sl-default anim-in anim-in-d1" id="shareCard" onclick="saveStampPng()" style="cursor:pointer;">
 
-        <!-- stamp.png: 우표 테두리 (배경) -->
-        <img class="stamp-bg" src="asset/stamp.png" alt="">
+        <!-- 우표 배경: stamp-1 / stamp-2 CSS display로 전환 -->
+        <img class="stamp-bg" id="stampBg1" src="asset/stamp-1.png" alt="" style="display:none;">
+        <img class="stamp-bg" id="stampBg2" src="asset/stamp-2.png" alt="" style="display:block;">
 
         <!-- 우표 내부 콘텐츠 -->
         <div class="stamp-inner">
@@ -907,7 +1032,14 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
             <div class="roll-slot stamp-slot" id="slot-h2"><div class="roll-inner" id="inner-h2"></div></div>
             <div class="stamp-colon">:</div>
             <div class="roll-slot stamp-slot" id="slot-m1"><div class="roll-inner" id="inner-m1"></div></div>
-            <div class="roll-slot stamp-slot" id="slot-m2"><div class="roll-inner" id="inner-m2"></div></div>
+            <div class="roll-slot stamp-slot" id="slot-m2" style="position:relative;">
+              <div class="roll-inner" id="inner-m2"></div>
+              <!-- AM/PM: slot-m2 기준 아래 정렬 -->
+              <div class="stamp-ampm-wrap" id="stampAmpmWrap" style="position:absolute;bottom:-18px;left:0;right:0;display:flex;flex-direction:column;align-items:center;">
+                <div class="stamp-ampm" id="driveAmPmInline"></div>
+                <div id="driveDayBadge" class="stamp-daybadge" style="display:none;"></div>
+              </div>
+            </div>
           </div>
 
           <!-- coating.png: 보라 도장 (좌하단) -->
@@ -917,21 +1049,20 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
           <img class="stamp-character anim-in anim-in-d1" src="asset/time2.png" alt="">
 
           <!-- AM/PM + 날짜 뱃지 -->
-          <div class="stamp-ampm-wrap">
-            <div class="stamp-ampm" id="driveAmPmInline"></div>
-            <div id="driveDayBadge" class="stamp-daybadge" style="display:none;"></div>
-          </div>
-
         </div>
       </div>
 
       <!-- 서브텍스트 -->
       <div class="stamp-subtext anim-in anim-in-d2" id="driveSubText">음주운전 기준치 이하 도달 추정 시각</div>
+      <div class="stamp-subtext anim-in anim-in-d2" id="driveResultTime" style="font-size:13px;font-weight:700;color:var(--txt-primary);margin-top:2px;margin-bottom:2px;"></div>
+      <div class="stamp-subtext anim-in anim-in-d2" id="driveDisclaimer" style="font-size:11px;color:var(--txt-secondary);margin-top:2px;">개인차에 따라 차이가 있으므로, 반드시 참고용으로만 확인하세요.</div>
 
       <!-- 버튼 -->
       <div class="result-btn-group anim-in anim-in-d3" id="resultBtnGroup">
-        <button class="share-btn" onclick="goToDetail()" id="detailBtn">상세 확인하기</button>
+        <button class="share-btn" onclick="goToDetail()" id="detailBtn">상세 리포트 확인</button>
       </div>
+
+
 
     </div>
   </div>
@@ -1043,17 +1174,38 @@ body { height: 100%; background: #000; font-family: 'Memoment', -apple-system, B
             <button class="skip-btn" style="flex:1;" onclick="restart()">다시 계산하기</button>
             <button class="skip-btn" style="flex:1;" id="shareResultBtn" onclick="shareResult()">공유하기</button>
           </div>
+          <div style="text-align:center;padding-top:20px;padding-bottom:8px;">
+            <a href="mailto:support@inmybackyard.kr" style="font-size:11px;color:var(--txt-secondary);letter-spacing:-0.01em;text-decoration:none;">CONTACT : support@inmybackyard.kr</a>
+          </div>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- 광고 화면 -->
-  <div class="screen" id="screen-ad">
-    <div class="ad-bg"></div>
-    <div class="ad-cta-wrap">
-      <button class="cta-btn" onclick="goAdToResult()">돌아가기</button>
+  <!-- 개인정보처리방침 화면 -->
+  <div class="screen" id="screen-privacy">
+    <div class="screen-inner" style="padding-top:0;">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0 20px;">
+        <button onclick="closePolicy()" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;color:var(--txt-primary);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-0.03em;">개인정보처리방침</div>
+      </div>
+      <div id="privacyContent" style="font-size:13px;color:var(--txt-secondary);line-height:1.8;letter-spacing:-0.01em;overflow-y:auto;max-height:calc(100vh - 160px);padding-bottom:40px;"></div>
+    </div>
+  </div>
+
+  <!-- 이용약관 화면 -->
+  <div class="screen" id="screen-terms">
+    <div class="screen-inner" style="padding-top:0;">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 0 20px;">
+        <button onclick="closePolicy()" style="background:none;border:none;cursor:pointer;padding:4px;display:flex;align-items:center;color:var(--txt-primary);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px;"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div style="font-size:17px;font-weight:700;letter-spacing:-0.03em;">이용약관</div>
+      </div>
+      <div id="termsContent" style="font-size:13px;color:var(--txt-secondary);line-height:1.8;letter-spacing:-0.01em;overflow-y:auto;max-height:calc(100vh - 160px);padding-bottom:40px;"></div><style>.indent{padding-left:14px;color:var(--txt-secondary);}</style>
     </div>
   </div>
 
@@ -1103,41 +1255,26 @@ function sbFetch(path, options) {
 }
 
 /* ── 결과 공유 ── */
+
+/* ── GA4 이벤트 헬퍼 ── */
+function gaEvent(name, params) {
+  if (typeof gtag === 'undefined') return;
+  gtag('event', name, params || {});
+}
 function shareResult() {
+  gaEvent('공유하기_클릭', { method: 'url' });
   var btn = document.getElementById('shareResultBtn');
   btn.textContent = '저장 중...';
   btn.disabled = true;
 
-  /* 결과값만 저장 — 개인정보(체중/키/나이/성별) 일절 저장 안 함 */
-  var W = state.weight, H = state.height, G = state.age;
-  var isMale = state.gender === 'male';
-  var TBW = isMale
-    ? 2.447 - (0.09516*G) + (10.74*H) + (0.3362*W)
-    : -2.097 + (10.69*H) + (0.2466*W);
-  var Fwater = isMale ? 0.825 : 0.838;
-  var r_avg  = TBW / (W * Fwater);
-
-  /* calculate()와 완전히 동일한 알코올 계산 */
-  var soju   = (state.sojuIdx !== null ? sojuData[state.sojuIdx] : null) || { abv:0, name:'' };
-  var beer   = (state.beerIdx  !== null ? beerData[state.beerIdx]  : null) || { abv:0, name:'' };
-  var A_soju = state.sojuBottles * 360 * (soju.abv / 100) * 0.789;
-  var A_beer = state.beerBottles * 500 * (beer.abv / 100) * 0.789;
-  var A      = A_soju + A_beer;
-  var F_avg  = 0.85;
-  var C0     = (A * F_avg) / (r_avg * W * 10);
-
-  /* 음주 종료 시각 (분 단위) — calculate()와 동일 */
-  var t1H = state.endHour % 12;
-  if (state.ampm === 'pm') t1H += 12;
-  var tEndMin = t1H * 60 + state.endMinute;
-
-  /* 저장 데이터 */
+  /* 저장 데이터 — state에서 직접 참조 */
+  var _soju = (state.sojuIdx !== null ? sojuData[state.sojuIdx] : null) || { name: null };
+  var _beer = (state.beerIdx  !== null ? beerData[state.beerIdx]  : null) || { name: null };
   var payload = {
-    soju_name:    (state.sojuIdx !== null && soju.name) ? soju.name : null,
+    soju_name:    _soju.name || null,
     soju_bottles: state.sojuBottles || 0,
-    beer_name:    (state.beerIdx  !== null && beer.name) ? beer.name  : null,
+    beer_name:    _beer.name || null,
     beer_bottles: state.beerBottles || 0,
-    /* 최종 결과 시각 그대로 저장 — 재계산 없음 */
     result_h:     window._lastResult ? window._lastResult.h    : 0,
     result_m:     window._lastResult ? window._lastResult.m    : 0,
     result_ampm:  window._lastResult ? window._lastResult.ampm : 'AM',
@@ -1159,8 +1296,8 @@ function shareResult() {
     /* 카카오 공유 or 클립보드 복사 */
     if (navigator.share) {
       navigator.share({
-        title: '나의 음주 분석 결과',
-        text: '위드마크 공식으로 계산한 내 혈중알코올농도 분해 타임라인을 확인해봐!',
+        title: '드라이브타임스탬프',
+        text: '즐거운 술자리 전, 내일 아침 나의 운전 가능 시간을 추정해봐!',
         url: shareUrl
       }).catch(function() {});
     } else {
@@ -1174,11 +1311,7 @@ function shareResult() {
     btn.disabled = false;
   })
   .catch(function(e) {
-    console.error(e);
-    /* Supabase 미연결 시 URL만 복사 */
-    var shareUrl = location.href;
-    navigator.clipboard.writeText(shareUrl).catch(function(){});
-    showShareToast('링크가 복사됐어요!');
+    showShareToast('오류: ' + (e.message || e));
     btn.textContent = '공유하기';
     btn.disabled = false;
   });
@@ -1204,60 +1337,217 @@ function showShareToast(msg) {
 }
 
 /* ── 공유 링크로 진입 시 결과 자동 복원 ── */
-(function() {
-  var params = new URLSearchParams(location.search);
-  var rid = params.get('r');
-  if (!rid) return;
+window.addEventListener('DOMContentLoaded', function() {
+  var rid = window._sharedRid;
+
+  /* 일반 진입: splash 표시 */
+  if (!rid) {
+    document.getElementById('screen-splash').classList.add('active');
+    return;
+  }
+
+  var splash = document.getElementById('screen-splash');
+
+  var loadingEl = document.createElement('div');
+  loadingEl.id = 'shared-loading';
+  loadingEl.style.cssText = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;background:var(--bg,#fff);';
+  loadingEl.innerHTML = '<div style="font-size:14px;color:#888;font-family:inherit;">불러오는 중...</div>';
+  document.body.appendChild(loadingEl);
+
   sbFetch('/rest/v1/results?id=eq.' + encodeURIComponent(rid) + '&select=data')
-    .then(function(r) { return r.json(); })
-    .then(function(rows) {
-      if (!rows || !rows[0]) return;
-      var d = rows[0].data;
-      /* 저장된 결과값으로 공유 전용 결과 화면 표시 */
-      showSharedResult(d);
+    .then(function(r) {
+      return r.json();
     })
-    .catch(function() {});
-})();
+    .then(function(rows) {
+      var el = document.getElementById('shared-loading');
+      if (el) el.remove();
+      if (!rows || !rows[0]) {
+        if (splash) splash.classList.add('active');
+        return;
+      }
+      showSharedResult(rows[0].data);
+    })
+    .catch(function(e) {
+      var el = document.getElementById('shared-loading');
+      if (el) el.remove();
+      if (splash) splash.classList.add('active');
+    });
+});
 
 function showSharedResult(d) {
-  /* 저장된 최종 시각을 그대로 표시 — 재계산 없음 */
-  var h12   = parseInt(d.result_h,    10) || 0;
-  var safeM = parseInt(d.result_m,    10) || 0;
+  var h12   = parseInt(d.result_h,  10) || 0;
+  var safeM = parseInt(d.result_m,  10) || 0;
   var ampm  = d.result_ampm || 'AM';
   var day   = d.result_day  || '';
+  var hStr  = String(h12).padStart(2, '0');
+  var mStr  = String(safeM).padStart(2, '0');
 
-  /* ── AM/PM + 날짜 뱃지 ── */
-  document.getElementById('sh-ampm').textContent = ampm;
-  var badge = document.getElementById('sh-daybadge');
-  if (day) { badge.textContent = day; badge.style.display = ''; }
-  else      { badge.style.display = 'none'; }
+  /* safeH24 역산 */
+  var safeH24 = h12 % 12;
+  if (ampm === 'PM') safeH24 += 12;
 
-  /* ── 음주 정보 ── */
+  window._lastResult   = { h: h12, m: safeM, ampm: ampm };
+  window._lastDayBadge = day;
+
+  /* 음주 정보 텍스트 */
   var parts = [];
-  if (d.soju_name && parseFloat(d.soju_bottles) > 0)
-    parts.push(d.soju_name + ' ' + d.soju_bottles + '병');
-  if (d.beer_name  && parseFloat(d.beer_bottles) > 0)
-    parts.push(d.beer_name  + ' ' + d.beer_bottles + '병');
-  document.getElementById('sh-subtext').textContent =
-    (parts.length ? parts.join(' + ') + ' 기준 · ' : '') + '음주운전 기준치 이하 도달 추정 시각';
+  if (d.soju_name && parseFloat(d.soju_bottles) > 0) parts.push(d.soju_name + ' ' + d.soju_bottles + '병');
+  if (d.beer_name && parseFloat(d.beer_bottles) > 0)  parts.push(d.beer_name + ' ' + d.beer_bottles + '병');
 
-  /* ── 공유 화면 표시 ── */
-  showScreen(13);
+  /* screen-result DOM 미리 채우기 */
+  var ampmEl  = document.getElementById('driveAmPmInline');
+  var badgeEl = document.getElementById('driveDayBadge');
+  var subEl   = document.getElementById('driveSubText');
+  if (ampmEl)  ampmEl.textContent  = ampm;
+  if (badgeEl) { badgeEl.textContent = day; badgeEl.style.display = day ? '' : 'none'; }
+  if (subEl)   subEl.textContent   = (parts.length ? parts.join(' + ') + ' 기준 · ' : '') + '음주운전 기준치 이하 도달 추정 시각';
+  /* 추정 시각 텍스트 (공유 진입 시) */
+  var _timeEl = document.getElementById('driveResultTime');
+  if (_timeEl) {
+    var _hh = String(h12).padStart(2, '0');
+    var _mi = String(safeM).padStart(2, '0');
+    _timeEl.textContent = '추정 시각: ' + _hh + ':' + _mi + ' ' + ampm;
+  }
 
-  /* ── 롤링 슬롯 ── */
-  setTimeout(function() {
-    var fontSize = Math.min(88, Math.max(64, window.innerWidth * 0.17));
-    var TILE_H   = Math.round(fontSize * 1.05);
-    var TILE_W   = Math.round(fontSize * 0.72);
-    ['sh-slot-h1','sh-slot-h2','sh-slot-m1','sh-slot-m2'].forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el) { el.style.height = TILE_H+'px'; el.style.width = TILE_W+'px'; }
+  /* 테마 인라인 계산 (getStampTheme 함수 호출 불가 시점 대비) */
+  var _layouts = {
+    0: {stampW:'53vw',timeTop:'2%',timeLeft:'1.5%',coatTop:'28%',coatLeft:'20%',coatW:'35%',charTop:'20%',charLeft:'-5%',charW:'100%',timeGap:'-12',fontRatio:0.343},
+    1: {stampW:'62vw',timeTop:'4.5%',timeLeft:'1.5%',coatTop:'28%',coatLeft:'8%',coatW:'25%',charTop:'37%',charLeft:'-3%',charW:'100%',timeGap:'-15',fontRatio:0.348},
+    2: {stampW:'53vw',timeTop:'2%',timeLeft:'1.5%',coatTop:'28%',coatLeft:'8%',coatW:'29%',charTop:'19%',charLeft:'14%',charW:'93%',timeGap:'-12',fontRatio:0.343},
+    3: {stampW:'53vw',timeTop:'2%',timeLeft:'-1%',coatTop:'28%',coatLeft:'8%',coatW:'34%',charTop:'21%',charLeft:'5%',charW:'90%',timeGap:'-12',fontRatio:0.339},
+    16:{stampW:'62vw',timeTop:'4.5%',timeLeft:'1.5%',coatTop:'28%',coatLeft:'8%',coatW:'29%',charTop:'36%',charLeft:'2%',charW:'95%',timeGap:'-15',fontRatio:0.348},
+    5: {stampW:'62vw',timeTop:'4.5%',timeLeft:'1.5%',coatTop:'31%',coatLeft:'4%',coatW:'24%',charTop:'37%',charLeft:'2%',charW:'95%',timeGap:'-15',fontRatio:0.348},
+    6: {stampW:'62vw',timeTop:'4.5%',timeLeft:'1.5%',coatTop:'28%',coatLeft:'8%',coatW:'29%',charTop:'32%',charLeft:'2%',charW:'100%',timeGap:'-15',fontRatio:0.348}
+  };
+  var _themeMap;
+  if      (safeH24 < 6)                   _themeMap = {char:'asset/time0.png',stamp:'2',color:'#F3AD62',layout:_layouts[0],sl:'sl-0'};
+  else if (safeH24 >= 6  && safeH24 < 8)  _themeMap = {char:'asset/time1.png',stamp:'1',color:'#3072BD',layout:_layouts[1],sl:'sl-1'};
+  else if (safeH24 >= 8  && safeH24 < 10) _themeMap = {char:'asset/time2.png',stamp:'2',color:'#D4382B',layout:_layouts[2],sl:'sl-2'};
+  else if (safeH24 >= 10 && safeH24 < 12) _themeMap = {char:'asset/time3.png',stamp:'2',color:'#748E52',layout:_layouts[3],sl:'sl-3'};
+  else if (safeH24 >= 12 && safeH24 < 14) _themeMap = {char:'asset/time4.png',stamp:'1',color:'#F9DEBE',layout:_layouts[16],sl:'sl-16'};
+  else if (safeH24 >= 14 && safeH24 < 16) _themeMap = {char:'asset/time5.png',stamp:'1',color:'#CAE5F4',layout:_layouts[5],sl:'sl-5'};
+  else                                     _themeMap = {char:'asset/time6.png',stamp:'1',color:'#925BAA',layout:_layouts[6],sl:'sl-6'};
+  var _theme = _themeMap;
+  window._lastTheme = _theme;
+
+  /* stamp 배경 */
+  var bg1 = document.getElementById('stampBg1');
+  var bg2 = document.getElementById('stampBg2');
+  if (bg1 && bg2) { bg1.style.display = _theme.stamp === '1' ? 'block' : 'none'; bg2.style.display = _theme.stamp === '2' ? 'block' : 'none'; }
+
+  /* stamp-card 클래스 */
+  var cardEl = document.querySelector('.stamp-card');
+  if (cardEl) {
+    cardEl.className = cardEl.className.replace('stamp-portrait','').replace('stamp-landscape','').trim()
+      + (_theme.stamp === '1' ? ' stamp-landscape' : ' stamp-portrait');
+  }
+
+  /* applyLayout 인라인: CSS 클래스(sl-*)만 교체, inline style 초기화 */
+  var _card2 = document.getElementById('shareCard');
+  if (_card2) {
+    _card2.className = _card2.className.replace(/sl-\S+/g,'').trim() + ' ' + _theme.sl;
+    /* inline style 초기화 — CSS 클래스가 위치 제어 */
+    var _tr   = _card2.querySelector('.stamp-time-row');
+    var _coat = _card2.querySelector('.stamp-coating');
+    var _ch   = _card2.querySelector('.stamp-character');
+    [_tr, _coat, _ch].forEach(function(el) {
+      if (el) { el.style.top=''; el.style.left=''; el.style.width=''; }
     });
-    buildSlotFor('sh-inner-h1', Math.floor(h12 / 10), fontSize, TILE_H, TILE_W);
-    buildSlotFor('sh-inner-h2', h12 % 10,             fontSize, TILE_H, TILE_W);
-    buildSlotFor('sh-inner-m1', Math.floor(safeM / 10), fontSize, TILE_H, TILE_W);
-    buildSlotFor('sh-inner-m2', safeM % 10,            fontSize, TILE_H, TILE_W);
-  }, 400);
+  }
+
+  var charEl = document.querySelector('.stamp-character');
+  if (charEl) charEl.src = _theme.char;
+
+  if (ampmEl)  ampmEl.style.color  = _theme.color;
+  if (badgeEl) { badgeEl.style.color = _theme.color; badgeEl.style.background = _theme.color + '22'; }
+  var colonEl = document.querySelector('.stamp-colon');
+  if (colonEl) colonEl.style.color = _theme.color;
+  document.querySelectorAll('.roll-digit').forEach(function(el){ el.style.color = _theme.color; });
+
+  /* screen-result를 애니메이션 없이 즉시 표시 */
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  var resultScreen = document.getElementById('screen-result');
+  if (resultScreen) {
+    resultScreen.style.transform = '';
+    resultScreen.style.opacity   = '';
+    resultScreen.classList.add('active');
+  }
+  /* 결과화면 배경 filter-2.png로 교체 */
+  var _appEl = document.querySelector('.app');
+  if (_appEl) _appEl.style.backgroundImage = "url('filter-2.png')";
+  currentScreen = 10;
+  var pf = document.getElementById('progressFill');
+  if (pf) pf.style.width = '0%';
+  var logo1 = document.getElementById('logo1Result');
+  if (logo1) logo1.style.display = '';
+
+  /* 공유 진입: 버튼을 "나도 확인하기"로 교체 */
+  var _detailBtn = document.getElementById('detailBtn');
+  if (_detailBtn) {
+    _detailBtn.textContent = '나도 확인하기';
+    _detailBtn.onclick = function() { restart(); showScreen(0); };
+    _detailBtn.style.visibility = '';
+  }
+
+  /* 롤링 슬롯 빌드 — buildSlot 인라인 구현 (스크립트 블록 독립) */
+  setTimeout(function() {
+    var _isLand  = cardEl && cardEl.classList.contains('stamp-landscape');
+    var _cardW   = _isLand ? 242 : 207;
+    var _ratio   = (_theme.layout && _theme.layout.fontRatio) ? _theme.layout.fontRatio : 0.340;
+    var _fs  = Math.round(_cardW * _ratio);
+    var _tH  = Math.round(_fs * 1.05);
+    var _tW  = Math.round(_fs * 0.72);
+    var _gap = (_theme.layout && _theme.layout.timeGap !== undefined) ? _theme.layout.timeGap : -4;
+    var _col = _theme.color || '#c91c1c';
+
+    ['slot-h1','slot-h2','slot-m1','slot-m2'].forEach(function(id) {
+      var sl = document.getElementById(id);
+      if (sl) { sl.style.height = _tH+'px'; sl.style.width = _tW+'px'; sl.style.marginRight = _gap+'px'; }
+    });
+
+    function _buildSlotInline(innerId, digit) {
+      var inner = document.getElementById(innerId);
+      if (!inner) return;
+      var slotEl = document.getElementById(innerId.replace('inner-','slot-'));
+      if (slotEl) slotEl.dataset.digit = digit;
+      inner.classList.remove('rolling');
+      inner.innerHTML = '';
+      var tiles = [];
+      for (var i = 0; i <= 9; i++) tiles.push(i);
+      for (var j = 0; j <= 9; j++) tiles.push(j);
+      tiles.forEach(function(n) {
+        var span = document.createElement('span');
+        span.className = 'roll-digit';
+        span.textContent = n;
+        span.style.cssText = [
+          'height:'+_tH+'px','min-height:'+_tH+'px','line-height:'+_tH+'px',
+          'font-size:'+_fs+'px','width:'+_tW+'px',
+          'font-family:Memoment,sans-serif','font-weight:700',
+          'color:'+_col,'letter-spacing:0em',
+          '-webkit-text-stroke:1.5px #1a1a1a','paint-order:stroke fill',
+          'display:flex','align-items:center','justify-content:center'
+        ].join(';');
+        inner.appendChild(span);
+      });
+      inner.style.transform = 'translateY(0)';
+      var targetY = -(10 + digit) * _tH;
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          inner.classList.add('rolling');
+          inner.style.transform = 'translateY(' + targetY + 'px)';
+        });
+      });
+    }
+
+    _buildSlotInline('inner-h1', parseInt(hStr[0], 10));
+    setTimeout(function(){ _buildSlotInline('inner-h2', parseInt(hStr[1], 10)); }, 60);
+    setTimeout(function(){ _buildSlotInline('inner-m1', parseInt(mStr[0], 10)); }, 120);
+    setTimeout(function(){ _buildSlotInline('inner-m2', parseInt(mStr[1], 10)); }, 180);
+    /* 콜론 fontSize 동기화 */
+    var _cEl = document.querySelector('.stamp-colon');
+    if (_cEl) { _cEl.style.fontSize = _fs + 'px'; _cEl.style.webkitTextStroke = '2px #1a1a1a'; }
+
+  }, 100);
 }
 
 /* 공유 화면 전용 슬롯 빌더 (기존 buildSlot의 TILE_H/W 클로저 문제 방지) */
@@ -1290,6 +1580,183 @@ function makeDigitSpan(parent, n, fontSize, TILE_H, TILE_W) {
 }
 
 /* 나도 계산해보기 → splash 화면으로 */
+/* ── 약관 동의 체크 ── */
+function updateAgreeBtn() {
+  var chk = document.getElementById('agreeChk');
+  var btn = document.getElementById('agreeBtn');
+  if (!chk || !btn) return;
+  btn.disabled = !chk.checked;
+  btn.style.opacity = chk.checked ? '1' : '0.4';
+}
+
+/* ── 약관/처리방침 화면 열기 ── */
+var _policyFrom = 1; /* 돌아갈 화면 인덱스 */
+function showPolicy(type) {
+  _policyFrom = currentScreen;
+  var screenId = type === 'privacy' ? 'screen-privacy' : 'screen-terms';
+  /* 현재 화면 숨기고 약관 화면 표시 */
+  document.querySelectorAll('.screen.active').forEach(function(s){ s.classList.remove('active'); });
+  var target = document.getElementById(screenId);
+  if (!target) return;
+  target.classList.add('active');
+  /* 내용 채우기 */
+  if (type === 'privacy') {
+    document.getElementById('privacyContent').innerHTML = PRIVACY_HTML;
+  } else {
+    document.getElementById('termsContent').innerHTML = TERMS_HTML;
+  }
+}
+
+function closePolicy() {
+  document.querySelectorAll('.screen.active').forEach(function(s){ s.classList.remove('active'); });
+  var screens = ['splash','intro','starttime','weight','height-age','gender','soju','bottles','beer','beer-bottles','result','detail','ad','shared'];
+  var target = document.getElementById('screen-' + (screens[_policyFrom] || 'intro'));
+  if (target) target.classList.add('active');
+}
+
+/* ── 약관 텍스트 ── */
+var PRIVACY_HTML = [
+  '<div style="font-size:15px;font-weight:700;color:var(--txt-primary);margin:0 0 4px;">개인정보처리방침</div>',
+  '<p style="margin:0 0 7px;font-size:11px;color:var(--txt-secondary);">시행일: 2025년 6월 1일</p>',
+  '<p style="margin:0 0 7px;">IMBY(이하 "운영자")는 drivetimestamp.com(이하 "서비스") 운영과 관련하여 「개인정보 보호법」 및 관련 법령이 정한 바에 따라 이용자의 개인정보를 보호합니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">1. 수집하는 개인정보</div>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">1.1 수집하지 않는 정보</p>',
+  '<p style="margin:0 0 7px;">본 서비스는 다음 정보를 <b>일절 수집·저장하지 않습니다.</b></p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 키, 몸무게, 나이, 성별</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 음주량, 혈중알코올농도 계산 결과</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 이름, 연락처, 이메일 등 식별 정보</p>',
+  '<p style="margin:0 0 7px;">위 정보는 이용자의 기기 내에서만 처리되며 외부로 전송되지 않습니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">1.2 자동 수집 정보 (서비스 개선 목적, 익명)</p>',
+  '<p style="margin:0 0 7px;">서비스 이용 과정에서 다음 정보가 익명으로 자동 수집될 수 있습니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 화면 전환 이력 (어느 단계에서 이탈했는지)</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 버튼 클릭 이벤트 (결과 보기, 공유하기 등)</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 접속 기기 종류, 운영체제, 브라우저 종류</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 접속 국가 (국가 단위, IP 주소 미수집)</p>',
+  '<p style="margin:0 0 7px;">위 정보는 Google Analytics 4를 통해 수집되며, IP 주소 익명화 및 광고 개인화 비활성화 설정이 적용되어 개인을 특정할 수 없습니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">2. 수집 목적 및 이용</div>',
+  '<p style="margin:0 0 7px;">수집된 익명 행동 데이터는 서비스 품질 개선, 오류 탐지, UI/UX 개선 목적으로만 사용됩니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">3. 개인정보의 제3자 제공</div>',
+  '<p style="margin:0 0 7px;">운영자는 이용자의 개인정보를 원칙적으로 제3자에게 제공하지 않습니다. 단, 익명 통계 데이터 처리를 위해 아래 수탁사를 이용합니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 수탁사: Google LLC (Google Analytics)</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 처리 목적: 익명 행동 데이터 분석</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 보유 기간: 최대 14개월</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">4. 개인정보의 보유 및 파기</div>',
+  '<p style="margin:0 0 7px;">Google Analytics를 통해 수집된 익명 통계 데이터는 최대 14개월간 보관 후 파기됩니다. 운영자가 직접 수집하는 개인정보는 없으므로 별도의 파기 절차가 필요하지 않습니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">5. 쿠키 및 유사 기술</div>',
+  '<p style="margin:0 0 7px;">서비스는 Google Analytics의 익명 분석을 위해 쿠키를 사용할 수 있습니다. 이용자는 브라우저 설정에서 쿠키 저장을 거부할 수 있습니다.</p>',
+  '<p style="margin:0 0 7px;"><b>Google Analytics 수집 거부 방법</b></p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· Google 애널리틱스 차단 부가기능 설치: tools.google.com/dlpage/gaoptout</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 브라우저 설정 → 쿠키 및 사이트 데이터 차단</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">6. 이용자의 권리</div>',
+  '<p style="margin:0 0 7px;">이용자는 언제든지 다음 권리를 행사할 수 있습니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">1. 개인정보 처리 현황 열람 요청</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">2. 개인정보 수집·이용에 대한 동의 철회</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">3. 서비스 이용 중단</p>',
+  '<p style="margin:0 0 7px;">본 서비스는 회원가입 없이 이용 가능하며, 개인을 식별할 수 있는 정보를 수집하지 않으므로 별도의 삭제 요청 절차는 필요하지 않습니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">7. 개인정보 보호책임자</div>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 서비스명: drivetimestamp.com</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 운영자: IMBY</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">· 문의: 서비스 내 문의 채널</p>',
+  '<p style="margin:0 0 7px;">기타 개인정보 침해 관련 신고·상담이 필요한 경우 개인정보침해신고센터(privacy.kisa.or.kr, ☎118) 또는 개인정보분쟁조정위원회(kopico.go.kr, ☎1833-6972)에 문의하실 수 있습니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">8. 개인정보처리방침의 변경</div>',
+  '<p style="margin:0 0 7px;">본 방침은 법령 또는 서비스 변경에 따라 개정될 수 있으며, 변경 시 시행일 7일 전에 서비스 내 공지를 통해 안내합니다.</p>',
+  '<p style="margin:16px 0 0;font-size:11px;color:var(--txt-secondary);">현행 방침 시행일: 2025년 6월 1일</p>',
+].join('');
+
+var TERMS_HTML = [
+  '<div style="font-size:15px;font-weight:700;color:var(--txt-primary);margin:0 0 4px;">서비스 이용약관</div>',
+  '<p style="margin:0 0 7px;font-size:11px;color:var(--txt-secondary);">시행일: 2025년 6월 1일</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">제1장 총칙</div>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제1조 (목적)</p>',
+  '<p style="margin:0 0 7px;">본 약관은 IMBY(이하 "운영자")가 운영하는 drivetimestamp.com(이하 "서비스")을 이용함에 있어 운영자와 이용자의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제2조 (정의)</p>',
+  '<p style="margin:0 0 7px;">이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">1. "서비스"란 운영자가 제공하는 drivetimestamp.com 및 관련 웹 서비스 일체를 말합니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">2. "이용자"란 서비스에 접속하여 이 약관에 따라 서비스를 이용하는 모든 자를 말합니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">3. "결과물"이란 서비스 이용을 통해 생성된 혈중알코올농도 추정 시각, 타임스탬프 이미지 등 일체를 말합니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제3조 (약관의 효력 및 변경)</p>',
+  '<p style="margin:0 0 7px;">① 본 약관은 서비스 화면에 게시함으로써 효력이 발생합니다.</p>',
+  '<p style="margin:0 0 7px;">② 운영자는 합리적인 사유가 있을 경우 약관을 변경할 수 있으며, 변경 시 시행일 7일 전에 인스타그램 공식 계정(@imbykorea)을 통해 안내합니다. 이용자에게 불리한 변경의 경우 30일 이상의 유예기간을 둡니다.</p>',
+  '<p style="margin:0 0 7px;">③ 이용자가 변경된 약관에 동의하지 않을 경우 서비스 이용을 중단할 수 있습니다. 변경 후에도 계속 이용하는 경우 변경 약관에 동의한 것으로 봅니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">제2장 서비스의 성격 및 운영자 면책</div>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제4조 (서비스의 성격 및 정보 제공 한계)</p>',
+  '<p style="margin:0 0 7px;">① 본 서비스는 위드마크(Widmark) 공식을 기반으로 혈중알코올농도(BAC) 분해 예상 시각을 수학적으로 추정하여 제공하는 <b>참고용 정보 도구</b>입니다.</p>',
+  '<p style="margin:0 0 7px;">② 서비스에서 제공하는 모든 수치 및 결과는 의학적 진단, 법적 판단, 또는 음주운전 가능 여부의 근거로 사용될 수 없습니다.</p>',
+  '<p style="margin:0 0 7px;">③ 실제 혈중알코올농도는 개인의 신체 상태, 건강 상태, 음식 섭취 여부, 음주 속도, 복용 약물, 피로도 등 다양한 변수에 의해 달라질 수 있으며, 서비스 추정치와 실제 수치 간에 상당한 차이가 발생할 수 있습니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제5조 (운영자의 면책)</p>',
+  '<p style="margin:10px 0 7px;font-size:12px;color:#c91c1c;">본 조항은 이용자의 권리에 중대한 영향을 미칩니다. 서비스 이용 전 반드시 숙지하시기 바랍니다.</p>',
+  '<p style="margin:0 0 7px;">① 운영자는 서비스 이용 결과로 발생하는 다음 각 호의 손해에 대하여 어떠한 법적 책임도 지지 않습니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">1. 이용자가 서비스 결과를 근거로 음주운전을 시도하여 발생한 교통사고, 인명피해, 재산피해, 형사처벌 및 행정제재</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">2. 서비스 결과를 음주측정 수치의 예측·회피 목적으로 이용하여 발생한 일체의 민·형사상 책임</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">3. 서비스 추정치와 실제 혈중알코올농도의 차이로 인해 발생한 모든 손해</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">4. 이용자가 제3자에게 가한 신체적·재산적·정신적 손해 및 그로 인한 법적 배상 책임</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">5. 서비스 중단·변경·오류로 인해 발생한 직접적·간접적·부수적·결과적 손해 일체</p>',
+  '<p style="margin:0 0 7px;">② 이용자가 본 서비스 결과를 신뢰하여 행한 모든 행위에 대한 책임은 전적으로 이용자 본인에게 귀속됩니다. 운영자는 이에 대해 민사상 손해배상 책임, 형사상 공동책임, 행정적 제재 등 어떠한 형태의 법적 책임도 부담하지 않습니다.</p>',
+  '<p style="margin:0 0 7px;">③ 운영자는 서비스의 정확성, 완전성, 신뢰성에 대해 명시적·묵시적 보증을 하지 않습니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제6조 (음주운전 절대 금지)</p>',
+  '<p style="margin:0 0 7px;">① <b>음주 후 운전은 도로교통법 제44조에 따라 엄격히 금지되며, 혈중알코올농도 0.03% 이상 시 형사처벌 대상이 됩니다.</b></p>',
+  '<p style="margin:0 0 7px;">② 본 서비스의 결과가 어떠한 수치를 나타내더라도, 이를 음주운전의 허용 또는 안전성에 대한 판단 근거로 삼아서는 안 됩니다.</p>',
+  '<p style="margin:0 0 7px;">③ 이용자는 본 서비스를 음주운전 가능 여부 판단 또는 단속 회피를 위한 목적으로 사용할 수 없으며, 이를 위반하여 발생한 모든 결과에 대한 책임은 이용자 본인이 부담합니다.</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">제3장 이용자의 권리와 의무</div>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제7조 (이용자의 동의 및 확인)</p>',
+  '<p style="margin:0 0 7px;">이용자는 약관 동의 체크박스를 선택함으로써 다음 사항에 동의한 것으로 간주됩니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">1. 본 서비스가 단순 참고용 추정 도구임을 인지하였음</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">2. 서비스 결과를 음주운전의 근거로 사용하지 않을 것임</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">3. 서비스 이용으로 발생하는 모든 결과에 대한 책임이 본인에게 있음을 인지하였음</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">4. 운영자가 서비스 이용 결과로 인한 어떠한 손해에 대해서도 법적 책임을 지지 않음에 동의하였음</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제8조 (이용자의 의무)</p>',
+  '<p style="margin:0 0 7px;">이용자는 다음 각 호의 행위를 하여서는 안 됩니다.</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">1. 서비스를 음주운전 가능 여부 판단 또는 단속 회피 목적으로 이용하는 행위</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">2. 서비스 결과를 타인에게 음주운전 허용의 근거로 제시하는 행위</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">3. 서비스의 정상적인 운영을 방해하는 행위</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">4. 자동화된 수단(봇, 크롤러 등)으로 서비스에 과도하게 접근하는 행위</p>',
+  '<p style="margin:0 0 5px;padding-left:14px;">5. 기타 법령 또는 공서양속에 반하는 방법으로 서비스를 이용하는 행위</p>',
+
+  '<div style="font-size:14px;font-weight:700;color:var(--txt-primary);margin:20px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--g200,#eee);">제4장 기타 사항</div>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제9조 (서비스의 제공 및 변경)</p>',
+  '<p style="margin:0 0 7px;">① 운영자는 서비스의 내용을 변경하거나 중단할 수 있으며, 이로 인해 이용자에게 발생한 손해에 대해 운영자의 고의 또는 과실이 없는 한 책임을 지지 않습니다.</p>',
+  '<p style="margin:0 0 7px;">② 서비스는 연중무휴 24시간 제공을 원칙으로 하나, 시스템 점검·장애 등 운영상 이유로 일시 중단될 수 있습니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제10조 (지식재산권)</p>',
+  '<p style="margin:0 0 7px;">① 서비스 내 모든 콘텐츠(디자인, 텍스트, 이미지, 로직 등)에 대한 지식재산권은 운영자에게 귀속됩니다.</p>',
+  '<p style="margin:0 0 7px;">② 이용자는 생성된 개인 결과물(타임스탬프 이미지 등)을 비상업적 목적으로 자유롭게 사용할 수 있습니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제11조 (개인정보보호)</p>',
+  '<p style="margin:0 0 7px;">운영자는 이용자의 개인정보를 관련 법령 및 개인정보처리방침에 따라 보호합니다. 서비스는 키·몸무게·나이 등 개인 신체 정보를 수집하지 않으며, 입력된 정보는 이용자의 기기 내에서만 처리됩니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제12조 (준거법 및 관할)</p>',
+  '<p style="margin:0 0 7px;">① 본 약관은 대한민국 법률에 따라 해석됩니다.</p>',
+  '<p style="margin:0 0 7px;">② 서비스 이용과 관련한 분쟁은 민사소송법상 관할 법원에 제소합니다.</p>',
+
+  '<p style="font-size:13px;font-weight:700;color:var(--txt-primary);margin:14px 0 6px;">제13조 (문의)</p>',
+  '<p style="margin:0 0 7px;">서비스 이용 관련 문의는 서비스 내 문의 채널을 통해 접수할 수 있습니다.</p>',
+  '<p style="margin:0 0 7px;">운영자: IMBY · 서비스: drivetimestamp.com</p>',
+
+  '<p style="margin:16px 0 0;font-size:11px;color:var(--txt-secondary);">[부칙] 본 약관은 2025년 6월 1일부터 시행합니다.</p>',
+].join('');
+
 function goToCalc() {
   restart();
   showScreen(0);
@@ -1302,8 +1769,49 @@ function goToCalc() {
 function setRealVh() {
   var vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--real-vh', vh + 'px');
+  /* 앱 실제 너비/높이를 CSS 변수로 주입 */
   var appEl = document.querySelector('.app');
-  if (appEl) appEl.style.height = window.innerHeight + 'px';
+  var appW = appEl ? appEl.getBoundingClientRect().width : Math.min(window.innerWidth, 430);
+  var appH = window.innerHeight;
+  document.documentElement.style.setProperty('--app-vw', (appW / 100) + 'px');
+  document.documentElement.style.setProperty('--app-vh', (appH / 100) + 'px');
+  if (appEl) {
+    var isMobile = window.innerWidth < 480;
+    appEl.style.height = isMobile ? appH + 'px' : '';
+  }
+  /* resize 시 결과화면이면 stamp 폰트/슬롯/gap 재계산 */
+  var _activeScreen = document.querySelector('.screen.active');
+  if (_activeScreen && _activeScreen.id === 'screen-result' && window._lastTheme) {
+    var _rc = document.getElementById('shareCard');
+    if (_rc) {
+      var _isLandR = _rc.classList.contains('stamp-landscape');
+      /* 모바일 기준 390px 고정 */
+      var _rCardW = _isLandR ? 242 : 207;
+      var _rRatio = (window._lastTheme.layout && window._lastTheme.layout.fontRatio)
+        ? window._lastTheme.layout.fontRatio : 0.385;
+      var _rFs = Math.round(_rCardW * _rRatio);
+      var _rTH = Math.round(_rFs * 1.05);
+      var _rTW = Math.round(_rFs * 0.72);
+      ['slot-h1','slot-h2','slot-m1','slot-m2'].forEach(function(id) {
+        var sl = document.getElementById(id);
+        if (sl) { sl.style.height = _rTH + 'px'; sl.style.width = _rTW + 'px'; }
+      });
+      document.querySelectorAll('#shareCard .roll-digit').forEach(function(el) {
+        el.style.fontSize   = _rFs + 'px';
+        el.style.height     = _rTH + 'px';
+        el.style.lineHeight = _rTH + 'px';
+        el.style.minHeight  = _rTH + 'px';
+        el.style.width      = _rTW + 'px';
+      });
+      var _rColon = document.querySelector('#shareCard .stamp-colon');
+      if (_rColon) _rColon.style.fontSize = _rFs + 'px';
+      var _rGap = (window._lastTheme.layout && window._lastTheme.layout.timeGap !== undefined)
+        ? window._lastTheme.layout.timeGap : -4;
+      document.querySelectorAll('#shareCard .stamp-slot').forEach(function(el) {
+        el.style.marginRight = _rGap + 'px';
+      });
+    }
+  }
 }
 setRealVh();
 window.addEventListener('resize', setRealVh);
@@ -1311,6 +1819,20 @@ window.addEventListener('resize', setRealVh);
 
 window.addEventListener('orientationchange', function() {
   setTimeout(setRealVh, 300);
+});
+
+/* 페이지 이탈·숨김 시 신체 정보 메모리에서 즉시 제거 */
+function _clearPersonalData() {
+  if (window.state) {
+    state.weight = 0;
+    state.height = 0;
+    state.age    = 0;
+    state.gender = null;
+  }
+}
+window.addEventListener('pagehide',        _clearPersonalData);
+window.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') _clearPersonalData();
 });
 
 /* ── 효과음: Web Audio API ──
@@ -1399,12 +1921,46 @@ var beerData = [
 ];
 
 /* 0=splash,1=intro,2=starttime,3=weight,4=height-age,5=gender,6=soju,7=bottles,8=beer,9=beer-bottles,10=result,11=detail,12=ad */
-var screens     = ['splash','intro','starttime','weight','height-age','gender','soju','bottles','beer','beer-bottles','result','detail','ad','shared'];
+var screens     = ['splash','intro','starttime','weight','height-age','gender','soju','bottles','beer','beer-bottles','result','detail','shared'];
 var progressMap = [0, 0, 10, 20, 32, 44, 55, 66, 76, 88, 100, 100, 100, 0];
 var currentScreen = 0;
 
 /* ── NAV ── */
 function showScreen(idx, dir) {
+  /* 결과화면 배경 전환 */
+  var _app = document.querySelector('.app');
+  if (_app) {
+    if (idx === 10) {
+      _app.style.backgroundImage = "url('filter-2.png')";
+    } else {
+      _app.style.backgroundImage = "url('filter.png')";
+    }
+  }
+  /* GA4 화면 이름 매핑 */
+  var _gaScreens = {
+    0:  '01_시작화면',
+    1:  '02_서비스소개',
+    2:  '03_음주종료시각_입력',
+    3:  '04_나이_입력',
+    4:  '05_성별_선택',
+    5:  '06_키체중_입력',
+    6:  '07_소주종류_선택',
+    7:  '08_소주량_선택',
+    8:  '09_맥주종류_선택',
+    9:  '10_맥주량_선택',
+    10: '11_결과화면_타임스탬프',
+    11: '12_결과화면_상세리포트',
+    12: '13_공유링크_진입'
+  };
+  /* GA4: 화면 전환 추적 */
+  if (typeof gtag !== 'undefined') {
+    gtag('event', '화면_전환', {
+      screen_name: _gaScreens[idx] || ('화면_' + idx),
+      previous_screen: _gaScreens[window._prevScreen] || ('화면_' + window._prevScreen)
+    });
+  }
+  window._prevScreen = idx;
+
   var prev = document.getElementById('screen-' + screens[currentScreen]);
   var next = document.getElementById('screen-' + screens[idx]);
   dir = dir || 'forward';
@@ -1424,7 +1980,7 @@ function showScreen(idx, dir) {
   currentScreen = idx;
   document.getElementById('progressFill').style.width = progressMap[idx] + '%';
   document.getElementById('backBtn').classList.toggle('visible', idx > 2 && idx < 10);
-  document.getElementById('logoTop').classList.toggle('visible', (idx > 1 && idx < 10) || idx === 12);
+  document.getElementById('logoTop').classList.toggle('visible', (idx >= 1 && idx < 10) || idx === 12);
   document.getElementById('logo1Result').style.display = idx === 10 ? '' : 'none';
 }
 function goBack()    { if (currentScreen > 2) showScreen(currentScreen - 1, 'back'); }
@@ -1433,6 +1989,14 @@ function goToStep1() { showScreen(2); }
 
 /* ── RESTART ── */
 function restart() {
+  gaEvent('다시계산하기_클릭');
+  /* detailBtn 원래대로 복원 (공유 링크 진입 후 나도 확인하기로 바뀐 경우) */
+  var _db = document.getElementById('detailBtn');
+  if (_db && _db.textContent === '나도 확인하기') {
+    _db.textContent = '상세 리포트 확인';
+    _db.onclick = function() { goToDetail(); };
+    _db.style.visibility = '';
+  }
   state = { endHour:12, endMinute:0, ampm:'am', weight:0, height:0, age:0, gender:null, sojuIdx:null, sojuBottles:0, beerIdx:null, beerBottles:0 };
   document.getElementById('hourDisplay').textContent   = '12';
   document.getElementById('minuteDisplay').textContent = '00';
@@ -1455,10 +2019,10 @@ function restart() {
 }
 
 /* ── DETAIL SCREEN ── */
-function goBackToResult() { showScreen(10); }  // 상세 → 결과
-function goAdToResult()    { showScreen(10, 'back'); }
+function goBackToResult() { gaEvent('돌아가기_클릭', { from: '상세리포트' }); showScreen(10); }  // 상세 → 결과
 
 function goToDetail() {
+  gaEvent('상세리포트_클릭');
   buildDetailScreen();
   showScreen(11);
   setTimeout(function(){
@@ -1557,6 +2121,13 @@ function buildDetailScreen() {
   var G = state.age;
   var isMale = state.gender === 'male';
 
+  /* 입력값 유효성 검증 — NaN이면 에러 안내 후 중단 */
+  if (!W || !H || !G || isNaN(W) || isNaN(H) || isNaN(G) || W <= 0 || H <= 0 || G <= 0) {
+    var errEl = document.getElementById('detailContent');
+    if (errEl) errEl.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--txt-secondary);font-size:14px;line-height:1.8;">잠시 오류가 발생했어요.<br>다시 계산해주세요!</div>';
+    return;
+  }
+
   var TBW;
   if (isMale) {
     TBW = 2.447 - (0.09516 * G) + (10.74 * H) + (0.3362 * W);
@@ -1570,8 +2141,11 @@ function buildDetailScreen() {
   var TBW_lo = TBW * (1 - cvPct); // TBW 최솟값 → r 최솟값 → C0 최댓값(느린 분해)
   var TBW_hi = TBW * (1 + cvPct); // TBW 최댓값 → r 최댓값 → C0 최솟값(빠른 분해)
   var r_avg      = TBW    / (W * Fwater);
-  var r_forC0hi  = Math.round((TBW_lo / (W * Fwater)) * 100) / 100; // C0 최댓값(느린 분해)에 대응하는 r
-  var r_forC0lo  = Math.round((TBW_hi / (W * Fwater)) * 100) / 100; // C0 최솟값(빠른 분해)에 대응하는 r
+  var r_forC0hi  = Math.round((TBW_lo / (W * Fwater)) * 1000) / 1000; // 소수점 3자리로 정밀도 향상 (0이 되는 반올림 오류 방지)
+  var r_forC0lo  = Math.round((TBW_hi / (W * Fwater)) * 1000) / 1000;
+  /* r이 0이 되면 Infinity → NaN 전파 — 0.001 최솟값 보장 */
+  if (r_forC0hi <= 0 || isNaN(r_forC0hi)) r_forC0hi = 0.001;
+  if (r_forC0lo <= 0 || isNaN(r_forC0lo)) r_forC0lo = 0.001;
 
   var soju   = sojuData[state.sojuIdx] || { abv: 0 };
   var sojuMl = state.sojuBottles * 360;
@@ -1624,8 +2198,17 @@ function buildDetailScreen() {
   var hrsMax = Math.max.apply(null, allHrs);
   var hrsAvg = hoursToBAC(C0, 0.020, beta_avg);
 
+  /* 계산 결과 NaN 체크 */
+  if (isNaN(hrsMin) || isNaN(hrsMax) || isNaN(hrsAvg) || isNaN(C0)) {
+    var errEl2 = document.getElementById('detailContent');
+    if (errEl2) errEl2.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--txt-secondary);font-size:14px;line-height:1.8;">잠시 오류가 발생했어요.<br>다시 계산해주세요!</div>';
+    return;
+  }
+
   // 시각 계산 헬퍼
   function minToTimeStr(totalMin) {
+    if (!isFinite(totalMin) || isNaN(totalMin)) return '--:--';
+    totalMin = Math.round(totalMin);
     var h24 = Math.floor(totalMin / 60) % 24;
     var m   = totalMin % 60;
     var ap  = h24 < 12 ? '오전' : '오후';
@@ -1651,8 +2234,8 @@ function buildDetailScreen() {
   specBacEl.textContent = 'BAC 0.000%';
   specBacEl.setAttribute('data-target', C0_hi.toFixed(3));
 
-  // 경고 텍스트 — 빠른 분해 시 시간(hrsMin) 기준, "최소 OO시 이전에는" 문구
-  var driveOkTime = tEndMin + Math.ceil(hrsMin * 60);
+  // 경고 텍스트 — 평균 분해 시간(hrsAvg) 기준
+  var driveOkTime = tEndMin + Math.ceil(hrsAvg * 60);
   document.getElementById('detailWarnText').textContent =
     minToTimeStr(tEndMin) + ' 음주 종료 후, 최소 ' +
     minToTimeStr(driveOkTime) + ' 이전에는 운전이 불가한 것으로 추정됩니다.';
@@ -1963,7 +2546,7 @@ function scrollSojuTo(idx) {
   wrap.addEventListener('mousedown',start); window.addEventListener('mousemove',move); window.addEventListener('mouseup',end);
 })();
 function goToSojuBottles() { showScreen(7); }
-function skipSoju() { state.sojuIdx=null; state.sojuBottles=0; showScreen(8); }
+function skipSoju() { gaEvent('소주_건너뜀'); state.sojuIdx=null; state.sojuBottles=0; showScreen(8); }
 
 /* ── STEP 6: 소주 병 수 ── */
 function renderBottles(vizId, pngSrc, bottles, aspectRatio) {
@@ -1980,7 +2563,7 @@ function renderBottles(vizId, pngSrc, bottles, aspectRatio) {
   var PADDING  = 16;          // 컨테이너 좌우 padding 합계
   var GAP      = 4;           // 이미지 간 gap
   // 화면 너비 기준 (screen-inner max-width 390px 적용)
-  var availW   = Math.min(window.innerWidth, 390) - 48 - PADDING;
+  var availW   = Math.min(window.innerWidth, 430) - 48 - PADDING;
   // 5개 × imgW + 4개 × GAP = availW
   var imgW     = Math.floor((availW - GAP * (PER_ROW - 1)) / PER_ROW);
   var imgH     = Math.round(imgW * aspectRatio);
@@ -2077,10 +2660,17 @@ function updateBeerMl() {
 
 /* ── CALCULATE (국과수 지침 NFS 2025 v1.1 기반) ── */
 function calculate() {
+  gaEvent('결과_계산완료');
   var W = state.weight;   // 체중 (kg)
   var H = state.height;   // 키 (m)
   var G = state.age;      // 나이 (만)
   var isMale = state.gender === 'male';
+
+  /* 입력값 유효성 검증 */
+  if (!W || !H || !G || isNaN(W) || isNaN(H) || isNaN(G) || W <= 0 || H <= 0 || G <= 0) {
+    alert('잠시 오류가 발생했어요. 다시 계산해주세요!');
+    return;
+  }
 
   /* ① Watson식으로 체수분량(TBW) 계산 (식4-1, 식4-2) */
   var TBW;
@@ -2134,20 +2724,171 @@ function calculate() {
   /* ⑧ 알코올 완전 분해 소요 시간 계산 (§4.2.4.3)
      평형구간(1.5hr) + C0 → 0.020% 선형 구간 */
   var hours_total = C0 <= 0.020 ? 1.5 : 1.5 + (C0 - 0.020) / beta;
+  if (isNaN(hours_total) || !isFinite(hours_total)) {
+    alert('잠시 오류가 발생했어요. 다시 계산해주세요!');
+    return;
+  }
 
   /* ⑨ 음주 종료 시각 기준 결과 시각 계산 */
-  function calcTime(baseMin, addHours) {
+
+/* ── 시간대별 스탬프 테마 ──
+   safeH24: 0~23 (24시간)
+   time0~6.png / stamp-1~2.png
+*/
+var LAYOUT_3 = {
+  stampW:'53vw', timeTop:'2%', timeLeft:'-1%',
+  coatTop:'28%', coatLeft:'8%', coatW:'34%',
+  charTop:'21%', charLeft:'5%', charW:'90%',
+  timeGap:'-12', fontRatio:0.339
+};
+var LAYOUT_5 = {
+  stampW:'62vw', timeTop:'4.5%', timeLeft:'1.5%',
+  coatTop:'31%', coatLeft:'4%', coatW:'24%',
+  charTop:'37%', charLeft:'2%', charW:'95%',
+  timeGap:'-15', fontRatio:0.348
+};
+var LAYOUT_2 = {
+  stampW:'53vw', timeTop:'2%', timeLeft:'1.5%',
+  coatTop:'28%', coatLeft:'8%', coatW:'29%',
+  charTop:'19%', charLeft:'14%', charW:'93%',
+  timeGap:'-12', fontRatio:0.343
+};
+var LAYOUT_1 = {
+  stampW:'62vw', timeTop:'4.5%', timeLeft:'1.5%',
+  coatTop:'28%', coatLeft:'8%', coatW:'25%',
+  charTop:'37%', charLeft:'-3%', charW:'100%',
+  timeGap:'-15', fontRatio:0.348
+};
+var LAYOUT_0 = {
+  stampW:'53vw', timeTop:'2%', timeLeft:'1.5%',
+  coatTop:'28%', coatLeft:'20%', coatW:'35%',
+  charTop:'20%', charLeft:'-5%', charW:'100%',
+  timeGap:'-12', fontRatio:0.343
+};
+var DEFAULT_LAYOUT = {
+  stampW:'46vw', timeTop:'3.5%', timeLeft:'1%',
+  coatTop:'28%', coatLeft:'8%', coatW:'37%',
+  charTop:'23%', charLeft:'9%', charW:'100%'
+};
+var LAYOUT_16 = {
+  stampW:'62vw', timeTop:'4.5%', timeLeft:'1.5%',
+  coatTop:'28%', coatLeft:'8%', coatW:'29%',
+  charTop:'36%', charLeft:'2%', charW:'95%',
+  timeGap:'-15', fontRatio:0.348
+};
+var LAYOUT_6 = {
+  stampW:'62vw', timeTop:'4.5%', timeLeft:'1.5%',
+  coatTop:'28%', coatLeft:'8%', coatW:'29%',
+  charTop:'32%', charLeft:'2%', charW:'100%',
+  timeGap:'-15', fontRatio:0.348
+};
+
+function getStampTheme(safeH24) {
+  if (safeH24 < 6)                    return { char:'asset/time0.png', stamp:'2', color:'#F3AD62', layout:LAYOUT_0,  sl:'sl-0'  };
+  if (safeH24 >= 6  && safeH24 < 8)  return { char:'asset/time1.png', stamp:'1', color:'#3072BD', layout:LAYOUT_1,  sl:'sl-1'  };
+  if (safeH24 >= 8  && safeH24 < 10) return { char:'asset/time2.png', stamp:'2', color:'#D4382B', layout:LAYOUT_2,  sl:'sl-2'  };
+  if (safeH24 >= 10 && safeH24 < 12) return { char:'asset/time3.png', stamp:'2', color:'#748E52', layout:LAYOUT_3,  sl:'sl-3'  };
+  if (safeH24 >= 12 && safeH24 < 14) return { char:'asset/time4.png', stamp:'1', color:'#F9DEBE', layout:LAYOUT_16, sl:'sl-16' };
+  if (safeH24 >= 14 && safeH24 < 16) return { char:'asset/time5.png', stamp:'1', color:'#CAE5F4', layout:LAYOUT_5,  sl:'sl-5'  };
+  return                                     { char:'asset/time6.png', stamp:'1', color:'#925BAA', layout:LAYOUT_6,  sl:'sl-6'  };
+}
+
+/* AM/PM 위치: time-row 아래 오른쪽에 배치 */
+function positionAmpm() {
+  var inner = document.querySelector('#shareCard .stamp-inner');
+  var tr    = document.querySelector('#shareCard .stamp-time-row');
+  var wrap  = document.getElementById('stampAmpmWrap');
+  if (!inner || !tr || !wrap) return;
+
+  var innerR = inner.getBoundingClientRect();
+  var trR    = tr.getBoundingClientRect();
+
+  /* stamp-inner 기준 상대 위치 */
+  var relTop  = (trR.bottom - innerR.top) / innerR.height * 100;
+  var relRight = (innerR.right - trR.right) / innerR.width * 100;
+
+  wrap.style.top   = relTop + '%';
+  wrap.style.right = Math.max(relRight, 1) + '%';
+  wrap.style.left  = '';
+}
+
+function applyLayout(layout, sl) {
+  /* CSS 클래스로 전환 — 인라인 스타일 사용 안 함 */
+  var card = document.getElementById('shareCard');
+  if (!card) return;
+  /* sl-* 클래스 교체 */
+  card.className = card.className.replace(/sl-\S+/g, '').trim() + ' ' + (sl || 'sl-default');
+  /* 인라인 스타일 초기화 (이전 잔재 제거) */
+  var tr   = card.querySelector('.stamp-time-row');
+  var coat = card.querySelector('.stamp-coating');
+  var ch   = card.querySelector('.stamp-character');
+  [tr, coat, ch].forEach(function(el) {
+    if (el) { el.style.top=''; el.style.left=''; el.style.width=''; }
+  });
+}
+
+function applyStampTheme(theme, fontSize) {
+  /* 캐릭터 이미지 */
+  var charEl = document.querySelector('.stamp-character');
+  if (charEl) charEl.src = theme.char;
+  /* 스탬프 배경 display 전환 */
+  var _s1a = document.getElementById('stampBg1');
+  var _s2a = document.getElementById('stampBg2');
+  if (_s1a && _s2a) {
+    _s1a.style.display = theme.stamp === '1' ? 'block' : 'none';
+    _s2a.style.display = theme.stamp === '2' ? 'block' : 'none';
+  }
+  var _carda = document.querySelector('.stamp-card');
+  if (_carda) {
+    if (theme.stamp === '1') {
+      _carda.className = _carda.className.replace('stamp-portrait','').replace('stamp-landscape','').trim() + ' stamp-landscape';
+    } else {
+      _carda.className = _carda.className.replace('stamp-portrait','').replace('stamp-landscape','').trim() + ' stamp-portrait';
+    }
+  }
+  /* 숫자 색상 + 테두리 */
+  var stroke = '1.5px #1a1a1a';
+  document.querySelectorAll('.roll-digit').forEach(function(el) {
+    el.style.color = theme.color;
+    el.style.webkitTextStroke = stroke;
+    el.style.paintOrder = 'stroke fill';
+  });
+  var colon = document.querySelector('.stamp-colon');
+  if (colon) {
+    colon.style.color = theme.color;
+    colon.style.webkitTextStroke = stroke;
+    colon.style.paintOrder = 'stroke fill';
+  }
+  /* AM/PM + 날짜뱃지 동일 색상 */
+  var ampmEl = document.getElementById('driveAmPmInline');
+  if (ampmEl) ampmEl.style.color = theme.color;
+  var badgeEl = document.getElementById('driveDayBadge');
+  if (badgeEl) { badgeEl.style.color = theme.color; badgeEl.style.background = theme.color + '22'; }
+}
+function calcTime(baseMin, addHours) {
+    /* NaN/Infinity 방어 */
+    if (!isFinite(baseMin) || isNaN(baseMin)) baseMin = 0;
+    if (!isFinite(addHours) || isNaN(addHours)) addHours = 1.5;
     var t2Min    = baseMin + Math.ceil(addHours * 60);
     var t2H24    = Math.floor(t2Min / 60) % 24;
     var t2M      = t2Min % 60;
     var ampm12   = t2H24 < 12 ? 'AM' : 'PM';
     var t2H12    = t2H24 % 12 || 12;
     var dayExtra = Math.floor(t2Min / 1440);
+    /* 결과값 NaN 최종 방어 */
+    if (isNaN(t2H12)) t2H12 = 12;
+    if (isNaN(t2M))   t2M   = 0;
     return { h: t2H12, m: t2M, ampm: ampm12, dayExtra: dayExtra };
   }
   var tResult = calcTime(tEndMin, hours_total);
   /* 전역 저장 — shareResult()에서 참조 */
   window._lastResult = tResult;
+
+  /* 24시간 계산 — h는 1~12, 12%12=0 버그 방지 */
+  var safeH24 = (tResult.h === 12 ? 0 : tResult.h);
+  if (tResult.ampm === 'PM') safeH24 += 12;
+  window._lastSafeH24 = safeH24;
+  /* 디버그: 콘솔에서 시간대 확인 */
 
   var hStr   = pad(tResult.h);   // "01"~"12"
   var mStr   = pad(tResult.m);   // "00"~"59"
@@ -2170,32 +2911,69 @@ function calculate() {
     badge.style.display = 'none';
   }
 
-  // 롤링 슬롯: stamp-card 실제 너비 기준으로 동적 계산
-  // stamp-card = min(48vw, 200px)
-  var cardW    = Math.min(window.innerWidth * 0.48, 200);
-  // stamp-inner: 좌우 4.5%씩 → inner = card * 0.91
-  // time-row: left 4%, 가용너비 = inner * 0.94
-  var innerW   = cardW * 0.91 * 0.94;
-  // fontSize 역산: 4*TILE_W(0.72) + colon(0.22) = innerW
-  var fontSize = Math.floor(innerW / (4 * 0.72 + 0.22));
-  fontSize     = Math.min(fontSize, 58);
-  var TILE_H   = Math.round(fontSize * 1.05);
-  var TILE_W   = Math.round(fontSize * 0.72);
-  ['slot-h1','slot-h2','slot-m1','slot-m2'].forEach(function(id) {
-    document.getElementById(id).style.height = TILE_H + 'px';
-    document.getElementById(id).style.width  = TILE_W + 'px';
-  });
-  // 콜론 font-size 동기화
-  var colonEl = document.querySelector('.stamp-colon');
-  if (colonEl) {
-    colonEl.style.fontSize      = fontSize + 'px';
-    colonEl.style.letterSpacing = '-0.06em';
-    colonEl.style.webkitTextStroke = '2px #1a1a1a';
+  /* 시간대 테마 적용 */
+  var _theme = getStampTheme(safeH24);
+  window._lastTheme = _theme;
+  applyLayout(_theme.layout, _theme.sl);
+  var _charEl = document.querySelector('.stamp-character');
+  if (_charEl) _charEl.src = _theme.char;
+  var _s1b = document.getElementById('stampBg1');
+  var _s2b = document.getElementById('stampBg2');
+  if (_s1b && _s2b) {
+    _s1b.style.display = _theme.stamp === '1' ? 'block' : 'none';
+    _s2b.style.display = _theme.stamp === '2' ? 'block' : 'none';
   }
+  var _card = document.querySelector('.stamp-card');
+  if (_card) {
+    if (_theme.stamp === '1') {
+      _card.className = _card.className.replace('stamp-portrait','').replace('stamp-landscape','').trim() + ' stamp-landscape';
+    } else {
+      _card.className = _card.className.replace('stamp-portrait','').replace('stamp-landscape','').trim() + ' stamp-portrait';
+    }
+  }
+
+  // className 변경 후 브라우저 레이아웃 확정 기다렸다가 슬롯 크기 계산
+  function _initSlots() {
+    var _card0 = document.getElementById('shareCard');
+    /* max-width 기준값 사용: portrait=230, landscape=270 */
+    var _isLand = _card0 && _card0.classList.contains('stamp-landscape');
+    /* 모바일 기준 390px 고정 */
+    var _cardW0 = _isLand ? 242 : 207;
+    var _fontRatio = (window._lastTheme && window._lastTheme.layout && window._lastTheme.layout.fontRatio)
+      ? window._lastTheme.layout.fontRatio : 0.385;
+    var fontSize = Math.round(_cardW0 * _fontRatio);
+    var TILE_H   = Math.round(fontSize * 1.05);
+    var TILE_W   = Math.round(fontSize * 0.72);
+    ['slot-h1','slot-h2','slot-m1','slot-m2'].forEach(function(id) {
+      var sl = document.getElementById(id);
+      if (sl) { sl.style.height = TILE_H + 'px'; sl.style.width = TILE_W + 'px'; }
+    });
+    var colonEl = document.querySelector('.stamp-colon');
+    if (colonEl) {
+      colonEl.style.fontSize         = fontSize + 'px';
+      colonEl.style.letterSpacing    = '0em';
+      colonEl.style.webkitTextStroke = '2px #1a1a1a';
+    }
+    /* gap 적용 */
+    var _gapVal = (window._lastTheme && window._lastTheme.layout && window._lastTheme.layout.timeGap !== undefined)
+      ? window._lastTheme.layout.timeGap : -4;
+    document.querySelectorAll('.stamp-slot').forEach(function(el) {
+      el.style.marginRight = _gapVal + 'px';
+    });
+    return { fontSize: fontSize, TILE_H: TILE_H, TILE_W: TILE_W };
+  }
+  var _slotDims = _initSlots();
+  var fontSize = _slotDims.fontSize;
+  var TILE_H   = _slotDims.TILE_H;
+  var TILE_W   = _slotDims.TILE_W;
 
   // 각 슬롯에 0~9 숫자 타일 채우고 목표 자리로 스크롤
   function buildSlot(innerId, targetDigit) {
     var inner = document.getElementById(innerId);
+    /* slot에 현재 digit 저장 — dbgApply에서 fontSize 변경 시 위치 재계산용 */
+    var slotId = innerId.replace('inner-', 'slot-');
+    var slotEl = document.getElementById(slotId);
+    if (slotEl) slotEl.dataset.digit = targetDigit;
     inner.classList.remove('rolling');
     inner.innerHTML = '';
     // 0~9 타일 2세트
@@ -2213,9 +2991,9 @@ function calculate() {
       span.style.width      = TILE_W + 'px';
       span.style.fontFamily    = "'Memoment', sans-serif";
       span.style.fontWeight    = '700';
-      span.style.color         = '#c91c1c';
-      span.style.letterSpacing = '-0.06em';
-      span.style.webkitTextStroke = '2px #1a1a1a';
+      span.style.color         = (_theme && _theme.color) ? _theme.color : '#c91c1c';
+      span.style.letterSpacing = '0em'; /* gap으로 간격 제어 */
+      span.style.webkitTextStroke = '1.5px #1a1a1a';
       span.style.paintOrder    = 'stroke fill';
       span.style.display       = 'flex';
       span.style.alignItems    = 'center';
@@ -2239,7 +3017,6 @@ function calculate() {
   setTimeout(function(){ buildSlot('inner-m1', parseInt(mStr[0], 10)); }, 120);
   setTimeout(function(){ buildSlot('inner-m2', parseInt(mStr[1], 10));
     setTimeout(function(){
-      // 우표 숫자 색상은 buildSlot에서 #c91c1c로 설정
     }, 20);
   }, 180);
 
@@ -2253,11 +3030,24 @@ function calculate() {
   var btnColor  = '#111111';
 
   if (document.getElementById('noDriveLabel')) document.getElementById('noDriveLabel').style.color = textColor;
-  if (document.getElementById('driveAmPmInline'))
-    document.getElementById('driveAmPmInline').style.color  = ampmColor;
+  /* AM/PM 색상은 applyStampTheme에서 테마 색으로 설정 */
   if (document.getElementById('driveDayBadge'))
     document.getElementById('driveDayBadge').style.color    = ampmColor;
   if (document.getElementById('driveSubText')) document.getElementById('driveSubText').style.color = subColor;
+  /* 추정 시각 텍스트 채우기 */
+  var _rtEl = document.getElementById('driveResultTime');
+  if (_rtEl && tResult) {
+    var _now = new Date();
+    var _off = tResult.dayExtra || 0;
+    var _td  = new Date(_now.getFullYear(), _now.getMonth(), _now.getDate() + _off);
+    var _yyyy = _td.getFullYear();
+    var _mm   = String(_td.getMonth() + 1).padStart(2, '0');
+    var _dd   = String(_td.getDate()).padStart(2, '0');
+    var _hh   = String(tResult.h).padStart(2, '0');
+    var _mi   = String(tResult.m).padStart(2, '0');
+    _rtEl.textContent = _yyyy + '.' + _mm + '.' + _dd + '. ' + _hh + ':' + _mi + ' ' + tResult.ampm;
+    _rtEl.style.color = textColor;
+  }
   // 우표 숫자 색상은 buildSlot에서 직접 설정
 
   var detailBtn = document.getElementById('detailBtn');
@@ -2271,43 +3061,133 @@ function calculate() {
 
   document.querySelectorAll('#screen-result .anim-in').forEach(function(el){ el.style.animation='none'; void el.offsetWidth; el.style.animation=''; });
   showScreen(10);
+  /* 테마 재적용 — showScreen 후 DOM 전환 완료 시점 */
+  setTimeout(function() {
+    var _s1b = document.getElementById('stampBg1');
+  var _s2b = document.getElementById('stampBg2');
+  if (_s1b && _s2b) {
+    _s1b.style.display = _theme.stamp === '1' ? 'block' : 'none';
+    _s2b.style.display = _theme.stamp === '2' ? 'block' : 'none';
+  }
+  var _card = document.querySelector('.stamp-card');
+  if (_card) {
+    if (_theme.stamp === '1') {
+      _card.className = _card.className.replace('stamp-portrait','').replace('stamp-landscape','').trim() + ' stamp-landscape';
+    } else {
+      _card.className = _card.className.replace('stamp-portrait','').replace('stamp-landscape','').trim() + ' stamp-portrait';
+    }
+  }
+    applyLayout(_theme.layout, _theme.sl);
+    var charEl2 = document.querySelector('.stamp-character');
+    if (charEl2) charEl2.src = _theme.char;
+    var ampmEl2 = document.getElementById('driveAmPmInline');
+    if (ampmEl2) ampmEl2.style.color = _theme.color;
+    var badgeEl2 = document.getElementById('driveDayBadge');
+    if (badgeEl2) { badgeEl2.style.color = _theme.color; badgeEl2.style.background = _theme.color + '22'; }
+    var colon2 = document.querySelector('.stamp-colon');
+    if (colon2) { colon2.style.color = _theme.color; }
+    document.querySelectorAll('.roll-digit').forEach(function(el){ el.style.color = _theme.color; });
+  }, 50);
   setTimeout(function(){ var rs=document.getElementById('resultScroll'); if(rs) rs.scrollTop=0; }, 100);
+}
+
+/* ── 이미지 src → base64 변환 헬퍼 ── */
+function _imgToDataUrl(src) {
+  return new Promise(function(resolve) {
+    var img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function() {
+      var c = document.createElement('canvas');
+      c.width = img.naturalWidth; c.height = img.naturalHeight;
+      c.getContext('2d').drawImage(img, 0, 0);
+      try { resolve(c.toDataURL('image/png')); }
+      catch(e) { resolve(src); } /* taint 시 원본 src 유지 */
+    };
+    img.onerror = function() { resolve(src); };
+    img.src = src + (src.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now();
+  });
+}
+
+/* 카드 내 모든 img를 base64로 교체하고 html2canvas 실행 */
+function _captureCard(card, onCloneFn) {
+  /* card 또는 wrap 안 모든 img 수집 */
+  var imgs = Array.prototype.slice.call(card.querySelectorAll('img'));
+  var srcs = imgs.map(function(img) { return img.src || img.getAttribute('src'); }).filter(Boolean);
+
+  return Promise.all(srcs.map(function(src) { return _imgToDataUrl(src); }))
+    .then(function(dataUrls) {
+      return html2canvas(card, {
+        useCORS:         true,
+        allowTaint:      true,
+        backgroundColor: null,
+        scale:           3,
+        logging:         false,
+        imageTimeout:    0,
+        onclone: function(doc, el) {
+          /* 이미지 src를 base64로 교체 */
+          var cloneImgs = el.querySelectorAll('img');
+          cloneImgs.forEach(function(img, i) {
+            if (dataUrls[i]) img.src = dataUrls[i];
+          });
+          /* 롤링 슬롯 현재 위치 고정 */
+          ['slot-h1','slot-h2','slot-m1','slot-m2'].forEach(function(id) {
+            var orig  = document.getElementById(id);
+            var clone = el.querySelector('#' + id);
+            if (!orig || !clone) return;
+            var origInner  = orig.querySelector('.roll-inner');
+            var cloneInner = clone.querySelector('.roll-inner');
+            if (origInner && cloneInner) {
+              cloneInner.style.transform  = origInner.style.transform;
+              cloneInner.style.transition = 'none';
+            }
+            clone.style.overflow = 'hidden';
+          });
+          /* anim-in opacity 확정 */
+          el.querySelectorAll('.anim-in').forEach(function(e) {
+            e.style.opacity   = '1';
+            e.style.transform = e.style.transform || 'none';
+          });
+          if (onCloneFn) onCloneFn(doc, el);
+        }
+      });
+    });
 }
 
 /* ── SNS 공유 ── */
 function shareImage() {
-  var btnGroup = document.getElementById('resultBtnGroup');
-  btnGroup.style.visibility = 'hidden';
+  var btn = document.getElementById('shareResultBtn');
+  if (btn) { btn.textContent = '공유 중...'; btn.disabled = true; }
 
-  setTimeout(function() {
-    html2canvas(document.getElementById('screen-result'), {
-      useCORS: true,
-      allowTaint: true,
-      scale: window.devicePixelRatio || 2,
-      backgroundColor: null,
-      logging: false
-    }).then(function(canvas) {
-      btnGroup.style.visibility = '';
+  /* 결과 화면 전체(stamp-result-wrap) 캡처 */
+  var wrap = document.querySelector('.stamp-result-wrap');
+  if (!wrap) return;
 
-      canvas.toBlob(function(blob) {
-        var file = new File([blob], '드라이브타임.png', { type: 'image/png' });
+  /* 캡처 전 버튼 숨김 처리 (공유버튼이 화면에 포함되지 않도록) */
+  var resultBottom = document.querySelector('.result-bottom, .share-btn-wrap, #shareResultBtn');
+  var screenResult = document.getElementById('screen-result');
 
-        if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
-          navigator.share({ files: [file], title: '나의 드라이브 타임' })
-            .catch(function(e) {
-              if (e.name !== 'AbortError') fallbackDownload(canvas);
-            });
-        } else {
-          fallbackDownload(canvas);
-        }
-      }, 'image/png', 1.0);
-
-    }).catch(function(e) {
-      btnGroup.style.visibility = '';
-      console.error(e);
-      alert('저장 실패. 화면 캡처를 이용해주세요.');
+  _captureCard(wrap, function(doc, el) {
+    /* 버튼 영역 숨기기 */
+    el.querySelectorAll('.skip-btn, .result-actions, .share-actions, #shareResultBtn').forEach(function(e) {
+      e.style.display = 'none';
     });
-  }, 100);
+  }).then(function(canvas) {
+    if (btn) { btn.textContent = '공유하기'; btn.disabled = false; }
+    canvas.toBlob(function(blob) {
+      var file = new File([blob], '드라이브타임스탬프.png', { type: 'image/png' });
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: '나의 드라이브타임스탬프' })
+          .catch(function(e) {
+            if (e.name !== 'AbortError') fallbackDownload(canvas);
+          });
+      } else {
+        fallbackDownload(canvas);
+      }
+    }, 'image/png', 1.0);
+  }).catch(function(e) {
+    if (btn) { btn.textContent = '공유하기'; btn.disabled = false; }
+    console.error('shareImage error:', e);
+  });
 }
 
 // 스크린샷 캡처용: 버튼 숨기고 촬영 후 복원
@@ -2354,29 +3234,15 @@ function fallbackDownload(canvas) {
   }, { passive: false });
 })();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
-/* ── 이미지 프리로드 ── */
-(function() {
-  var imgs = [
-    'png/%EC%B0%B8%EC%9D%B4%EC%8A%AC.png','png/%EC%A7%84%EB%A1%9C.png','png/%EC%B2%98%EC%9D%8C%EC%B2%98%EB%9F%BC.png','png/%EC%83%88%EB%A1%9C.png',
-    'png/Krush.png','png/Kloud.png','png/Kelly.png','png/Terra.png','png/Cass.png'
-  ];
-  imgs.forEach(function(src) {
-    var img = new Image();
-    img.src = src;
-  });
-})();
-</script>
 
 
 
 
 
-</body>
-</html>
+
 <!-- ═══ 디버그 패널 (결과화면 위치/폰트 조정용) ═══ -->
 <div id="dbgPanel" style="
-  display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999;
+  display:none !important; position:fixed; bottom:0; left:0; right:0; z-index:9999;
   background:rgba(0,0,0,0.9); color:#fff; padding:12px 16px 20px;
   font-family:monospace; font-size:11px;
   max-height:60vh; overflow-y:auto;
@@ -2394,8 +3260,8 @@ function fallbackDownload(canvas) {
   <div style="margin-bottom:6px;padding:8px;background:rgba(255,255,255,0.07);border-radius:6px;">
     <b style="color:#7df;">🎫 우표</b>
     <div style="display:grid;grid-template-columns:80px 1fr 44px;align-items:center;gap:4px;margin-top:6px;">
-      <span>Y위치(vh)</span><input type="range" id="sl_stampY" min="5" max="40" step="0.5" value="20.5" oninput="dbgApply()" style="width:100%;"><span id="lbl_stampY" style="text-align:right;">20.5vh</span>
-      <span>크기(vw)</span><input type="range" id="sl_stampW" min="30" max="80" step="1" value="46" oninput="dbgApply()" style="width:100%;"><span id="lbl_stampW" style="text-align:right;">46vw</span>
+      <span>위치(pb-vh)</span><input type="range" id="sl_stampY" min="0" max="30" step="0.5" value="10" oninput="dbgApply()" style="width:100%;"><span id="lbl_stampY" style="text-align:right;">10vh</span>
+      <span>크기(%)</span><input type="range" id="sl_stampW" min="30" max="90" step="1" value="53" oninput="dbgApply()" style="width:100%;"><span id="lbl_stampW" style="text-align:right;">53%</span>
     </div>
   </div>
 
@@ -2405,8 +3271,10 @@ function fallbackDownload(canvas) {
     <div style="display:grid;grid-template-columns:80px 1fr 44px;align-items:center;gap:4px;margin-top:6px;">
       <span>top(%)</span><input type="range" id="sl_timeTop" min="0" max="20" step="0.5" value="3.5" oninput="dbgApply()" style="width:100%;"><span id="lbl_timeTop" style="text-align:right;">3.5%</span>
       <span>left(%)</span><input type="range" id="sl_timeLeft" min="-5" max="15" step="0.5" value="1" oninput="dbgApply()" style="width:100%;"><span id="lbl_timeLeft" style="text-align:right;">1%</span>
-      <span>자간(em)</span><input type="range" id="sl_timeLS" min="-15" max="5" step="1" value="-6" oninput="dbgApply()" style="width:100%;"><span id="lbl_timeLS" style="text-align:right;">-0.06em</span>
+      <span>숫자간격px</span><input type="range" id="sl_timeGap" min="-20" max="10" step="1" value="-4" oninput="dbgApply()" style="width:100%;"><span id="lbl_timeGap" style="text-align:right;">-4px</span>
       <span>테두리px</span><input type="range" id="sl_timeStroke" min="0" max="6" step="0.5" value="2" oninput="dbgApply()" style="width:100%;"><span id="lbl_timeStroke" style="text-align:right;">2px</span>
+      <span>폰트크기</span><input type="range" id="sl_fontSize" min="20" max="100" step="1" value="77" oninput="dbgApply()" style="width:100%;"><span id="lbl_fontSize" style="text-align:right;">77px</span>
+      <span>폰트굵기</span><input type="range" id="sl_fontWeight" min="100" max="900" step="100" value="700" oninput="dbgApply()" style="width:100%;"><span id="lbl_fontWeight" style="text-align:right;">700</span>
     </div>
   </div>
 
@@ -2434,9 +3302,65 @@ function fallbackDownload(canvas) {
 
 <button id="dbgToggle" onclick="
   var p=document.getElementById('dbgPanel');
-  p.style.display=p.style.display==='none'?'block':'none';
+  var willShow = p.style.display==='none';
+  p.style.display = willShow ? 'block' : 'none';
+  if (willShow) {
+    /* 패널 열릴 때 슬라이더를 현재 활성 레이아웃 값으로 완전 동기화 */
+    var _theme = window._lastTheme;
+    var _layout = (_theme && _theme.layout) ? _theme.layout : null;
+    var _card = document.getElementById('shareCard');
+
+    /* 카드 너비 */
+    var _c = _card;
+    var _slW = document.getElementById('sl_stampW');
+    var _lbW = document.getElementById('lbl_stampW');
+    if (_c && _slW && _lbW) {
+      var _defaultW = _c.classList.contains('stamp-landscape') ? 62 : 53;
+      _slW.value = _defaultW;
+      _lbW.textContent = _defaultW + '%';
+    }
+
+    if (_layout) {
+      /* coating */
+      var setSlider = function(id, lblId, rawVal, suffix) {
+        var el = document.getElementById(id);
+        var lb = document.getElementById(lblId);
+        if (el && lb) { el.value = parseFloat(rawVal); lb.textContent = parseFloat(rawVal) + (suffix || ''); }
+      };
+      setSlider('sl_coatTop',  'lbl_coatTop',  _layout.coatTop,  '%');
+      setSlider('sl_coatLeft', 'lbl_coatLeft', _layout.coatLeft, '%');
+      setSlider('sl_coatW',    'lbl_coatW',    _layout.coatW,    '%');
+      setSlider('sl_charTop',  'lbl_charTop',  _layout.charTop,  '%');
+      setSlider('sl_charLeft', 'lbl_charLeft', _layout.charLeft, '%');
+      setSlider('sl_charW',    'lbl_charW',    _layout.charW,    '%');
+      setSlider('sl_timeTop',  'lbl_timeTop',  _layout.timeTop,  '%');
+      setSlider('sl_timeLeft', 'lbl_timeLeft', _layout.timeLeft, '%');
+    }
+
+    /* fontSize: 공식 기반 계산 (className 변경 후 getBoundingClientRect 불안정 방지) */
+    var _slFs = document.getElementById('sl_fontSize');
+    var _lbFs = document.getElementById('lbl_fontSize');
+    if (_slFs && _lbFs) {
+      var _openCard = document.getElementById('shareCard');
+      var _isLandO = _openCard && _openCard.classList.contains('stamp-landscape');
+      /* 모바일 기준 390px 고정 */
+      var _openW = _isLandO ? 242 : 207;
+      var _openRatio = (_layout && _layout.fontRatio) ? _layout.fontRatio : 0.340;
+      var _fsVal = Math.round(_openW * _openRatio);
+      _slFs.value = _fsVal;
+      _lbFs.textContent = _fsVal + 'px';
+    }
+    /* gap: layout.timeGap 값으로 동기화 */
+    var _slGap = document.getElementById('sl_timeGap');
+    var _lbGap = document.getElementById('lbl_timeGap');
+    if (_slGap && _lbGap) {
+      var _gapVal = (_layout && _layout.timeGap !== undefined) ? _layout.timeGap : -4;
+      _slGap.value = parseInt(_gapVal);
+      _lbGap.textContent = _gapVal + 'px';
+    }
+  }
 " style="
-  display:none;
+  display:none !important;
   position:fixed; bottom:72px; right:16px; z-index:10000;
   width:40px;height:40px;border-radius:50%;border:none;
   background:rgba(0,0,0,0.55);color:#fff;font-size:18px;cursor:pointer;
@@ -2447,52 +3371,108 @@ function dbgApply() {
   var V = function(id){ return document.getElementById(id).value; };
   var L = function(id, txt){ document.getElementById(id).textContent = txt; };
 
-  var stampY    = V('sl_stampY');
-  var stampW    = V('sl_stampW');
-  var timeTop   = V('sl_timeTop');
-  var timeLeft  = V('sl_timeLeft');
-  var timeLS    = V('sl_timeLS');    // -15~5 → /100 → em
-  var timeStroke= V('sl_timeStroke');
-  var coatTop   = V('sl_coatTop');
-  var coatLeft  = V('sl_coatLeft');
-  var coatW     = V('sl_coatW');
-  var charTop   = V('sl_charTop');
-  var charLeft  = V('sl_charLeft');
-  var charW     = V('sl_charW');
+  var stampY      = V('sl_stampY');
+  var stampW      = V('sl_stampW');
+  var timeTop     = V('sl_timeTop');
+  var timeLeft    = V('sl_timeLeft');
+  var timeGap     = V('sl_timeGap');
+  var timeStroke  = V('sl_timeStroke');
+  var fontSize    = V('sl_fontSize');
+  var fontWeight  = V('sl_fontWeight');
+  var coatTop     = V('sl_coatTop');
+  var coatLeft    = V('sl_coatLeft');
+  var coatW       = V('sl_coatW');
+  var charTop     = V('sl_charTop');
+  var charLeft    = V('sl_charLeft');
+  var charW       = V('sl_charW');
 
-  var lsEm = (parseFloat(timeLS) / 100).toFixed(2);
-  L('lbl_stampY',    stampY    + 'vh');
-  L('lbl_stampW',    stampW    + 'vw');
-  L('lbl_timeTop',   timeTop   + '%');
-  L('lbl_timeLeft',  timeLeft  + '%');
-  L('lbl_timeLS',    lsEm      + 'em');
-  L('lbl_timeStroke',timeStroke + 'px');
-  L('lbl_coatTop',   coatTop   + '%');
-  L('lbl_coatLeft',  coatLeft  + '%');
-  L('lbl_coatW',     coatW     + '%');
-  L('lbl_charTop',   charTop   + '%');
-  L('lbl_charLeft',  charLeft  + '%');
-  L('lbl_charW',     charW     + '%');
+  L('lbl_stampY',     stampY     + 'vh');
+  L('lbl_stampW',     stampW     + '%');
+  L('lbl_timeTop',    timeTop    + '%');
+  L('lbl_timeLeft',   timeLeft   + '%');
+  L('lbl_timeGap',    timeGap    + 'px');
+  L('lbl_timeStroke', timeStroke + 'px');
+  L('lbl_fontSize',   fontSize   + 'px');
+  L('lbl_fontWeight', fontWeight);
+  L('lbl_coatTop',    coatTop    + '%');
+  L('lbl_coatLeft',   coatLeft   + '%');
+  L('lbl_coatW',      coatW      + '%');
+  L('lbl_charTop',    charTop    + '%');
+  L('lbl_charLeft',   charLeft   + '%');
+  L('lbl_charW',      charW      + '%');
 
-  // 적용
+  /* 우표 위치: padding-bottom으로 위로 당기기 (justify-content:center 유지) */
   var wrap = document.querySelector('.stamp-result-wrap');
-  if (wrap) wrap.style.paddingTop = stampY + 'vh';
+  if (wrap) wrap.style.paddingBottom = stampY + 'vh';
 
-  var card = document.querySelector('.stamp-card');
-  if (card) card.style.width = stampW + 'vw';
+  /* 우표 크기: stamp-landscape(stamp-1)와 stamp-portrait(stamp-2) 기준 분리 */
+  var card = document.getElementById('shareCard');
+  if (card) {
+    var isLandscape = card.classList.contains('stamp-landscape');
+    /* 모바일 기준 390px 고정 — 슬라이더로 미세 조정 시에만 비율 반영 */
+    var baseW = isLandscape ? 242 : 207;
+    var baseMultiplier = isLandscape ? 62 : 53;
+    var effectiveW = (parseFloat(stampW) !== 53) ? (baseW * parseFloat(stampW) / baseMultiplier) : baseW;
+    card.style.width = Math.round(effectiveW) + 'px';
+    card.style.maxWidth = '';
+  }
 
+  var timeGap = V('sl_timeGap');
+  L('lbl_timeGap', timeGap + 'px');
   var tr = document.querySelector('.stamp-time-row');
-  if (tr) { tr.style.top = timeTop + '%'; tr.style.left = timeLeft + '%'; }
+  if (tr) {
+    tr.style.top  = timeTop + '%';
+    tr.style.left = timeLeft + '%';
+  }
+  document.querySelectorAll('.stamp-slot').forEach(function(el) {
+    el.style.marginRight = timeGap + 'px';
+  });
 
-  // 시간 숫자 자간 + 테두리 실시간 적용
+  /* 시간 폰트/테두리 — letter-spacing 대신 gap으로 간격 제어 */
+  var _fs = parseFloat(fontSize);
+  var _tH = Math.round(_fs * 1.05);
+  var _tW = Math.round(_fs * 0.72);
   document.querySelectorAll('.roll-digit').forEach(function(el) {
-    el.style.letterSpacing = lsEm + 'em';
+    el.style.letterSpacing    = '0em';
     el.style.webkitTextStroke = timeStroke + 'px #1a1a1a';
+    el.style.fontSize   = _fs + 'px';
+    el.style.fontWeight = fontWeight;
+    el.style.height     = _tH + 'px';
+    el.style.lineHeight = _tH + 'px';
+    el.style.minHeight  = _tH + 'px';
+    el.style.width      = _tW + 'px';
+  });
+  /* 슬롯 크기 + roll-inner transform 재계산 (fontSize 바꾸면 위치도 재계산) */
+  ['slot-h1','slot-h2','slot-m1','slot-m2'].forEach(function(id) {
+    var sl = document.getElementById(id);
+    if (!sl) return;
+    sl.style.height = _tH + 'px';
+    sl.style.width  = _tW + 'px';
+    /* 현재 보여주는 숫자 파악 후 transform 재계산 */
+    var inner = sl.querySelector('.roll-inner');
+    if (!inner) return;
+    var cur = inner.style.transform; /* translateY(-Npx) */
+    var match = cur.match(/translateY\(\s*(-?[\d.]+)px\s*\)/);
+    if (match) {
+      /* 기존 index 역산: oldY = -(10+digit)*oldTH → digit = -oldY/oldTH - 10 */
+      var oldY = parseFloat(match[1]);
+      /* 슬롯에 data-digit 있으면 사용, 없으면 역산 */
+      var digit = parseInt(sl.dataset.digit !== undefined ? sl.dataset.digit : -1);
+      if (digit < 0 || digit > 9) {
+        /* 역산: 가장 가까운 정수로 */
+        var oldTH = Math.abs(oldY) > 0 ? Math.round(Math.abs(oldY) / 10 - 10 + 0.5) : 0;
+        digit = Math.max(0, Math.min(9, Math.round(-oldY / _tH - 10)));
+      }
+      inner.style.transition = 'none';
+      inner.style.transform  = 'translateY(' + (-(10 + digit) * _tH) + 'px)';
+    }
   });
   var colon = document.querySelector('.stamp-colon');
   if (colon) {
-    colon.style.letterSpacing = lsEm + 'em';
+    colon.style.letterSpacing    = '0em';
     colon.style.webkitTextStroke = timeStroke + 'px #1a1a1a';
+    colon.style.fontWeight       = fontWeight;
+    colon.style.fontSize = fontSize + 'px';
   }
 
   var coat = document.querySelector('.stamp-coating');
@@ -2504,13 +3484,12 @@ function dbgApply() {
 
 function dbgCopy() {
   var V = function(id){ return document.getElementById(id).value; };
-  var lsEm = (parseFloat(V('sl_timeLS')) / 100).toFixed(2);
   var css = [
     '/* 조정된 CSS값 */',
-    '.stamp-result-wrap { padding-top: ' + V('sl_stampY') + 'vh; }',
-    '.stamp-card { width: ' + V('sl_stampW') + 'vw; }',
+    '.stamp-result-wrap { padding-bottom: ' + V('sl_stampY') + 'vh; }',
+    '.stamp-card { width: calc(var(--app-vw, 1vw) * ' + V('sl_stampW') + '); }',
     '.stamp-time-row { top: ' + V('sl_timeTop') + '%; left: ' + V('sl_timeLeft') + '%; }',
-    '/* 자간: ' + lsEm + 'em / 테두리: ' + V('sl_timeStroke') + 'px */',
+    '/* gap: ' + V('sl_timeGap') + 'px / 테두리: ' + V('sl_timeStroke') + 'px / fontSize: ' + V('sl_fontSize') + 'px / weight: ' + V('sl_fontWeight') + ' */',
     '.stamp-coating { top: ' + V('sl_coatTop') + '%; left: ' + V('sl_coatLeft') + '%; width: ' + V('sl_coatW') + '%; }',
     '.stamp-character { top: ' + V('sl_charTop') + '%; left: ' + V('sl_charLeft') + '%; width: ' + V('sl_charW') + '%; }',
   ].join('\n');
@@ -2523,11 +3502,50 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!app) return;
   new MutationObserver(function() {
     var active = document.querySelector('.screen.active');
-    btn.style.display = (active && active.id === 'screen-result') ? 'block' : 'none';
+    btn.style.display = 'none'; /* 개발자 패널 숨김 처리 */
     if (btn.style.display === 'none') document.getElementById('dbgPanel').style.display = 'none';
   }).observe(app, { subtree: true, attributes: true, attributeFilter: ['class'] });
 });
+
+/* 진단 함수 */
+
+
+function showStampToast(msg) {
+  var toast = document.getElementById('shareToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'shareToast';
+    toast.style.cssText =
+      'position:fixed;bottom:120px;left:50%;transform:translateX(-50%);' +
+      'background:rgba(0,0,0,0.78);color:#fff;padding:11px 22px;' +
+      'border-radius:999px;font-size:14px;font-family:inherit;' +
+      'z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.25s;' +
+      'white-space:nowrap;';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  clearTimeout(toast._t);
+  toast._t = setTimeout(function() { toast.style.opacity = '0'; }, 2400);
+}
+
+/* ── 스탬프 PNG 저장 ── */
+function saveStampPng() {
+  gaEvent('이미지_저장');
+  var card = document.getElementById('shareCard');
+  if (!card) return;
+
+  _captureCard(card).then(function(canvas) {
+    var link = document.createElement('a');
+    link.download = 'drivestamp.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showStampToast('타임스탬프가 저장되었어요! 🎫');
+  }).catch(function(e) {
+    console.error('saveStampPng error:', e);
+  });
+}
 </script>
-<!-- ═══ /디버그 패널 ═══ -->
+
 </body>
 </html>
